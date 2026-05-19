@@ -1,0 +1,48 @@
+----------------------------------------------------------------------
+  Setup Sheet
+----------------------------------------------------------------------
+
+  Created           : 11-08-2004 18:16:11
+  Created by        : DNCMAX
+  Program           : S1001
+  File              : C:\Cimco\SampleDB\Haas\S1001.NC
+
+----------------------------------------------------------------------
+  DBPROGRAM         : S1001
+  DBPRGFIELD1       : PN01-1001
+  DBPRGFIELD2       : DWG1001-A1
+  DBPRGFIELD3       : SAMPLE PART 1001
+  DBPRGFIELD4       : 
+  DBPRGFIELD5       : 
+  DBPRGFIELD6       : 
+  DBPRGFIELD7       : 
+  DBPRGFIELD8       : 
+  DBPRGFIELD9       : 
+  DBDELETEDBY       : 
+  DBCREATEDBY       : AUTOIMPORT
+  DBMODIFIEDBY      : AUTOIMPORT
+  DBUNLOCKEDBY      : 
+  DBREADONLYBY      : 
+  DBUNREADONLY      : AUTOIMPORT
+  DBCREATED         : 11-08-2004 18:16:11
+  DBMODIFIED        : 11-08-2004 18:16:11
+  DBDELETED         : 
+  DBREADONLY        : Not read-only
+  DBUNLOCKED        : Locked
+  DBFILE            : C:\Cimco\SampleDB\Haas\S1001.NC
+  DBFILESHORT       : S1001.NC
+  DBFILEDIR         : C:\Cimco\SampleDB\Haas
+  DBFILEDESCRIPTION : Program
+  DBFILEDELETEDBY   : 
+  DBMACHINEGROUP    : Haas
+  DBCUSTOMER        : SUPER PARTS INC.
+  DBADDRESS         : 
+  DBADDRESS2        : 
+  DBCITY            : 
+  DBCOUNTRY         : 
+  DBTELEPHONE       : 
+  DBZIPCODE         : 
+  DBFAX             : 
+  DBHOMEPAGE        : 
+  DBCUSTOMERSTATE   : 
+----------------------------------------------------------------------

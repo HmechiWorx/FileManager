@@ -1,0 +1,48 @@
+----------------------------------------------------------------------
+  Setup Sheet
+----------------------------------------------------------------------
+
+  Created           : 11-08-2004 18:16:01
+  Created by        : DNCMAX
+  Program           : R1009
+  File              : C:\Cimco\SampleDB\Fanuc 0M\R1009.NC
+
+----------------------------------------------------------------------
+  DBPROGRAM         : R1009
+  DBPRGFIELD1       : PN01-1009
+  DBPRGFIELD2       : DWG1009-B1 REV3
+  DBPRGFIELD3       : ELEPHANT
+  DBPRGFIELD4       : 
+  DBPRGFIELD5       : 
+  DBPRGFIELD6       : 
+  DBPRGFIELD7       : 
+  DBPRGFIELD8       : 
+  DBPRGFIELD9       : 
+  DBDELETEDBY       : 
+  DBCREATEDBY       : AUTOIMPORT
+  DBMODIFIEDBY      : AUTOIMPORT
+  DBUNLOCKEDBY      : 
+  DBREADONLYBY      : 
+  DBUNREADONLY      : AUTOIMPORT
+  DBCREATED         : 11-08-2004 18:16:00
+  DBMODIFIED        : 11-08-2004 18:16:00
+  DBDELETED         : 
+  DBREADONLY        : Not read-only
+  DBUNLOCKED        : Locked
+  DBFILE            : C:\Cimco\SampleDB\Fanuc 0M\R1009.NC
+  DBFILESHORT       : R1009.NC
+  DBFILEDIR         : C:\Cimco\SampleDB\Fanuc 0M
+  DBFILEDESCRIPTION : Program
+  DBFILEDELETEDBY   : 
+  DBMACHINEGROUP    : Fanuc 0M
+  DBCUSTOMER        : SUPER PARTS INC.
+  DBADDRESS         : 
+  DBADDRESS2        : 
+  DBCITY            : 
+  DBCOUNTRY         : 
+  DBTELEPHONE       : 
+  DBZIPCODE         : 
+  DBFAX             : 
+  DBHOMEPAGE        : 
+  DBCUSTOMERSTATE   : 
+----------------------------------------------------------------------

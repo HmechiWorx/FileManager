@@ -1,0 +1,48 @@
+----------------------------------------------------------------------
+  Setup Sheet
+----------------------------------------------------------------------
+
+  Created           : 11-08-2004 18:16:04
+  Created by        : DNCMAX
+  Program           : R1047
+  File              : C:\Cimco\SampleDB\Fanuc 0M\R1047.NC
+
+----------------------------------------------------------------------
+  DBPROGRAM         : R1047
+  DBPRGFIELD1       : PN01-1047
+  DBPRGFIELD2       : DWG1047-R1
+  DBPRGFIELD3       : SAMPLE PART 1047
+  DBPRGFIELD4       : 
+  DBPRGFIELD5       : 
+  DBPRGFIELD6       : 
+  DBPRGFIELD7       : 
+  DBPRGFIELD8       : 
+  DBPRGFIELD9       : 
+  DBDELETEDBY       : 
+  DBCREATEDBY       : AUTOIMPORT
+  DBMODIFIEDBY      : AUTOIMPORT
+  DBUNLOCKEDBY      : 
+  DBREADONLYBY      : 
+  DBUNREADONLY      : AUTOIMPORT
+  DBCREATED         : 11-08-2004 18:16:04
+  DBMODIFIED        : 11-08-2004 18:16:04
+  DBDELETED         : 
+  DBREADONLY        : Not read-only
+  DBUNLOCKED        : Locked
+  DBFILE            : C:\Cimco\SampleDB\Fanuc 0M\R1047.NC
+  DBFILESHORT       : R1047.NC
+  DBFILEDIR         : C:\Cimco\SampleDB\Fanuc 0M
+  DBFILEDESCRIPTION : Program
+  DBFILEDELETEDBY   : 
+  DBMACHINEGROUP    : Fanuc 0M
+  DBCUSTOMER        : QUALITY PARTS CO
+  DBADDRESS         : 
+  DBADDRESS2        : 
+  DBCITY            : 
+  DBCOUNTRY         : 
+  DBTELEPHONE       : 
+  DBZIPCODE         : 
+  DBFAX             : 
+  DBHOMEPAGE        : 
+  DBCUSTOMERSTATE   : 
+----------------------------------------------------------------------

@@ -1,0 +1,48 @@
+----------------------------------------------------------------------
+  Setup Sheet
+----------------------------------------------------------------------
+
+  Created           : 11-08-2004 18:16:20
+  Created by        : DNCMAX
+  Program           : S1092
+  File              : C:\Cimco\SampleDB\Haas\S1092.NC
+
+----------------------------------------------------------------------
+  DBPROGRAM         : S1092
+  DBPRGFIELD1       : PN03-1092
+  DBPRGFIELD2       : DWG1092-A3
+  DBPRGFIELD3       : SAMPLE PART 1092
+  DBPRGFIELD4       : 
+  DBPRGFIELD5       : 
+  DBPRGFIELD6       : 
+  DBPRGFIELD7       : 
+  DBPRGFIELD8       : 
+  DBPRGFIELD9       : 
+  DBDELETEDBY       : 
+  DBCREATEDBY       : AUTOIMPORT
+  DBMODIFIEDBY      : AUTOIMPORT
+  DBUNLOCKEDBY      : 
+  DBREADONLYBY      : 
+  DBUNREADONLY      : AUTOIMPORT
+  DBCREATED         : 11-08-2004 18:16:20
+  DBMODIFIED        : 11-08-2004 18:16:20
+  DBDELETED         : 
+  DBREADONLY        : Not read-only
+  DBUNLOCKED        : Locked
+  DBFILE            : C:\Cimco\SampleDB\Haas\S1092.NC
+  DBFILESHORT       : S1092.NC
+  DBFILEDIR         : C:\Cimco\SampleDB\Haas
+  DBFILEDESCRIPTION : Program
+  DBFILEDELETEDBY   : 
+  DBMACHINEGROUP    : Haas
+  DBCUSTOMER        : HI TECH CO
+  DBADDRESS         : 
+  DBADDRESS2        : 
+  DBCITY            : 
+  DBCOUNTRY         : 
+  DBTELEPHONE       : 
+  DBZIPCODE         : 
+  DBFAX             : 
+  DBHOMEPAGE        : 
+  DBCUSTOMERSTATE   : 
+----------------------------------------------------------------------

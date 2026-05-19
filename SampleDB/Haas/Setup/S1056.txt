@@ -1,0 +1,48 @@
+----------------------------------------------------------------------
+  Setup Sheet
+----------------------------------------------------------------------
+
+  Created           : 11-08-2004 18:16:17
+  Created by        : DNCMAX
+  Program           : S1056
+  File              : C:\Cimco\SampleDB\Haas\S1056.NC
+
+----------------------------------------------------------------------
+  DBPROGRAM         : S1056
+  DBPRGFIELD1       : PN02-1056
+  DBPRGFIELD2       : DWG1056-A1
+  DBPRGFIELD3       : SAMPLE PART 1056
+  DBPRGFIELD4       : 
+  DBPRGFIELD5       : 
+  DBPRGFIELD6       : 
+  DBPRGFIELD7       : 
+  DBPRGFIELD8       : 
+  DBPRGFIELD9       : 
+  DBDELETEDBY       : 
+  DBCREATEDBY       : AUTOIMPORT
+  DBMODIFIEDBY      : AUTOIMPORT
+  DBUNLOCKEDBY      : 
+  DBREADONLYBY      : 
+  DBUNREADONLY      : AUTOIMPORT
+  DBCREATED         : 11-08-2004 18:16:17
+  DBMODIFIED        : 11-08-2004 18:16:17
+  DBDELETED         : 
+  DBREADONLY        : Not read-only
+  DBUNLOCKED        : Locked
+  DBFILE            : C:\Cimco\SampleDB\Haas\S1056.NC
+  DBFILESHORT       : S1056.NC
+  DBFILEDIR         : C:\Cimco\SampleDB\Haas
+  DBFILEDESCRIPTION : Program
+  DBFILEDELETEDBY   : 
+  DBMACHINEGROUP    : Haas
+  DBCUSTOMER        : HI TECH CO
+  DBADDRESS         : 
+  DBADDRESS2        : 
+  DBCITY            : 
+  DBCOUNTRY         : 
+  DBTELEPHONE       : 
+  DBZIPCODE         : 
+  DBFAX             : 
+  DBHOMEPAGE        : 
+  DBCUSTOMERSTATE   : 
+----------------------------------------------------------------------

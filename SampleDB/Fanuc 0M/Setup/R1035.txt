@@ -1,0 +1,48 @@
+----------------------------------------------------------------------
+  Setup Sheet
+----------------------------------------------------------------------
+
+  Created           : 11-08-2004 18:16:03
+  Created by        : DNCMAX
+  Program           : R1035
+  File              : C:\Cimco\SampleDB\Fanuc 0M\R1035.NC
+
+----------------------------------------------------------------------
+  DBPROGRAM         : R1035
+  DBPRGFIELD1       : PN01-1035
+  DBPRGFIELD2       : DWG1035-R2
+  DBPRGFIELD3       : SAMPLE PART 1035
+  DBPRGFIELD4       : 
+  DBPRGFIELD5       : 
+  DBPRGFIELD6       : 
+  DBPRGFIELD7       : 
+  DBPRGFIELD8       : 
+  DBPRGFIELD9       : 
+  DBDELETEDBY       : 
+  DBCREATEDBY       : AUTOIMPORT
+  DBMODIFIEDBY      : AUTOIMPORT
+  DBUNLOCKEDBY      : 
+  DBREADONLYBY      : 
+  DBUNREADONLY      : AUTOIMPORT
+  DBCREATED         : 11-08-2004 18:16:03
+  DBMODIFIED        : 11-08-2004 18:16:03
+  DBDELETED         : 
+  DBREADONLY        : Not read-only
+  DBUNLOCKED        : Locked
+  DBFILE            : C:\Cimco\SampleDB\Fanuc 0M\R1035.NC
+  DBFILESHORT       : R1035.NC
+  DBFILEDIR         : C:\Cimco\SampleDB\Fanuc 0M
+  DBFILEDESCRIPTION : Program
+  DBFILEDELETEDBY   : 
+  DBMACHINEGROUP    : Fanuc 0M
+  DBCUSTOMER        : QUALITY PARTS CO
+  DBADDRESS         : 
+  DBADDRESS2        : 
+  DBCITY            : 
+  DBCOUNTRY         : 
+  DBTELEPHONE       : 
+  DBZIPCODE         : 
+  DBFAX             : 
+  DBHOMEPAGE        : 
+  DBCUSTOMERSTATE   : 
+----------------------------------------------------------------------

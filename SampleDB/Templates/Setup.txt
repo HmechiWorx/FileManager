@@ -1,0 +1,51 @@
+----------------------------------------------------------------------
+  Setup Sheet
+----------------------------------------------------------------------
+
+  Created           : $DATETIME
+  Created by        : $DBUSER
+  Program           : $DBPROGRAM
+  File              : $DBFILE
+
+----------------------------------------------------------------------
+  DBPROGRAM         : $DBPROGRAM
+  DBPRGFIELD1       : $DBPRGFIELD1
+  DBPRGFIELD2       : $DBPRGFIELD2
+  DBPRGFIELD3       : $DBPRGFIELD3
+  DBPRGFIELD4       : $DBPRGFIELD4
+  DBPRGFIELD5       : $DBPRGFIELD5
+  DBPRGFIELD6       : $DBPRGFIELD6
+  DBPRGFIELD7       : $DBPRGFIELD7
+  DBPRGFIELD8       : $DBPRGFIELD8
+  DBPRGFIELD9       : $DBPRGFIELD9
+  DBPROJECT         : $DBPROJECT
+  DBSTATUS          : $DBSTATUS
+  DBDELETEDBY       : $DBDELETEDBY
+  DBCREATEDBY       : $DBCREATEDBY
+  DBMODIFIEDBY      : $DBMODIFIEDBY
+  DBUNLOCKEDBY      : $DBUNLOCKEDBY
+  DBREADONLYBY      : $DBREADONLYBY
+  DBUNREADONLY      : $DBUNREADONLY
+  DBCREATED         : $DBCREATED
+  DBMODIFIED        : $DBMODIFIED
+  DBDELETED         : $DBDELETED
+  DBREADONLY        : $DBREADONLY
+  DBUNLOCKED        : $DBUNLOCKED
+  DBFILE            : $DBFILE
+  DBFILESHORT       : $DBFILESHORT
+  DBFILEDIR         : $DBFILEDIR
+  DBFILEDESCRIPTION : $DBFILEDESCRIPTION
+  DBFILEDELETEDBY   : $DBFILEDELETEDBY
+  DBMACHINEGROUP    : $DBMACHINEGROUP
+  DBCUSTOMER        : $DBCUSTOMER
+  DBADDRESS         : $DBADDRESS
+  DBADDRESS2        : $DBADDRESS2
+  DBCITY            : $DBCITY
+  DBCOUNTRY         : $DBCOUNTRY
+  DBTELEPHONE       : $DBTELEPHONE
+  DBZIPCODE         : $DBZIPCODE
+  DBFAX             : $DBFAX
+  DBHOMEPAGE        : $DBHOMEPAGE
+  DBCUSTOMERSTATE   : $DBCUSTOMERSTATE
+  DBFILENOTE        : $DBFILENOTE
+----------------------------------------------------------------------

@@ -1,0 +1,48 @@
+----------------------------------------------------------------------
+  Setup Sheet
+----------------------------------------------------------------------
+
+  Created           : 11-08-2004 18:16:02
+  Created by        : DNCMAX
+  Program           : R1021
+  File              : C:\Cimco\SampleDB\Fanuc 0M\R1021.NC
+
+----------------------------------------------------------------------
+  DBPROGRAM         : R1021
+  DBPRGFIELD1       : PN01-1021
+  DBPRGFIELD2       : DWG1021-R4
+  DBPRGFIELD3       : SAMPLE PART 1021
+  DBPRGFIELD4       : 
+  DBPRGFIELD5       : 
+  DBPRGFIELD6       : 
+  DBPRGFIELD7       : 
+  DBPRGFIELD8       : 
+  DBPRGFIELD9       : 
+  DBDELETEDBY       : 
+  DBCREATEDBY       : AUTOIMPORT
+  DBMODIFIEDBY      : AUTOIMPORT
+  DBUNLOCKEDBY      : 
+  DBREADONLYBY      : 
+  DBUNREADONLY      : AUTOIMPORT
+  DBCREATED         : 11-08-2004 18:16:02
+  DBMODIFIED        : 11-08-2004 18:16:02
+  DBDELETED         : 
+  DBREADONLY        : Not read-only
+  DBUNLOCKED        : Locked
+  DBFILE            : C:\Cimco\SampleDB\Fanuc 0M\R1021.NC
+  DBFILESHORT       : R1021.NC
+  DBFILEDIR         : C:\Cimco\SampleDB\Fanuc 0M
+  DBFILEDESCRIPTION : Program
+  DBFILEDELETEDBY   : 
+  DBMACHINEGROUP    : Fanuc 0M
+  DBCUSTOMER        : QUALITY PARTS CO
+  DBADDRESS         : 
+  DBADDRESS2        : 
+  DBCITY            : 
+  DBCOUNTRY         : 
+  DBTELEPHONE       : 
+  DBZIPCODE         : 
+  DBFAX             : 
+  DBHOMEPAGE        : 
+  DBCUSTOMERSTATE   : 
+----------------------------------------------------------------------
