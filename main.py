@@ -58,6 +58,8 @@ class FileManagerApp:
         self.root_folders = []
         self.load_root_folders()
         self.save_root_folders()
+        self.update_folder_label()
+        self.populate_tree()
         self.load_root_folders()
         self.selected_file = None
         self.selected_file_mtime = None
@@ -194,9 +196,6 @@ class FileManagerApp:
         self.db_conn.commit()
 
     def build_ui(self):
-        # ...existing code...
-        self.update_folder_label()
-        self.populate_tree()
         # Color palette
         COLOR_PRIMARY = "#F5A623"  # orange
         COLOR_BG = "#F5F7FA"       # very light gray
@@ -425,26 +424,21 @@ class FileManagerApp:
             self.populate_tree()
         else:
             messagebox.showwarning("Remove Folder", "Selected item is not a root folder.")
-            self.tree.heading("#0", text="File")
-            self.tree.heading("Status", text="Status")
-            self.tree.heading("Comments", text="Comments")
-            self.tree.column("#0", width=250, stretch=False)
-            self.tree.column("Status", width=80, stretch=False)
-            self.tree.column("Comments", width=180, stretch=False)
-            # Fixed size for the treeview
-            self.tree.pack_propagate(False)
-            self.tree.pack(fill=tk.NONE, expand=False, side=tk.LEFT)
-            self.tree.config(height=15)
-            # Always show scrollbars
-            tree_scroll_y = ttk.Scrollbar(tree_frame, orient=tk.VERTICAL, command=self.tree.yview)
-            tree_scroll_x = ttk.Scrollbar(tree_frame, orient=tk.HORIZONTAL, command=self.tree.xview)
-            self.tree.configure(yscrollcommand=tree_scroll_y.set, xscrollcommand=tree_scroll_x.set)
-            tree_scroll_y.pack(fill=tk.Y, side=tk.LEFT)
-            tree_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
-            self.tree.bind("<Button-1>", lambda e: "break" if self.tree.identify_region(e.x, e.y) == "separator" else None)
-            self.tree.bind("<<TreeviewSelect>>", self.on_tree_select)
+
+    def _find_root_folder(self, path: Path):
+        for folder in self.root_folders:
+            try:
+                if path == folder or folder in path.parents:
+                    return folder
+            except Exception:
+                continue
+        return None
+
+    def populate_tree(self):
+        self.tree.delete(*self.tree.get_children())
+        for folder in self.root_folders:
             if not folder.exists():
-                pass
+                continue
             node = self.tree.insert("", "end", text=folder.name, open=True, values=("", str(folder)))
             self._populate_tree(node, folder)
 
