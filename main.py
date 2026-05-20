@@ -17,6 +17,23 @@ VERSION_DIR = Path("versions")
 LOCK_PASSWORD = "123"
 
 class FileManagerApp:
+    def save_root_folders(self):
+        """Save the list of root folders to a file for persistence."""
+        try:
+            with open("root_folders.txt", "w", encoding="utf-8") as f:
+                for folder in self.root_folders:
+                    f.write(str(folder) + "\n")
+        except Exception:
+            pass
+
+    def load_root_folders(self):
+        """Load the list of root folders from a file if it exists."""
+        try:
+            if os.path.exists("root_folders.txt"):
+                with open("root_folders.txt", "r", encoding="utf-8") as f:
+                    self.root_folders = [Path(line.strip()) for line in f if line.strip()]
+        except Exception:
+            self.root_folders = []
     def open_cnc_editor_folder(self):
         os.startfile(r"D:\Program Files (x86)\CNC Syntax Editor\cncsyn.exe")
 
@@ -37,7 +54,11 @@ class FileManagerApp:
         if not self.license_key or not self.validate_license_key(self.license_key):
             self.prompt_for_license_key()
 
+        # --- Folder persistence ---
         self.root_folders = []
+        self.load_root_folders()
+        self.save_root_folders()
+        self.load_root_folders()
         self.selected_file = None
         self.selected_file_mtime = None
         self.image_preview = None
@@ -140,6 +161,7 @@ class FileManagerApp:
         # (moved to __init__)
 
     def setup_db(self):
+        # Add comment column if not exists
         self.db_cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS file_versions (
@@ -147,9 +169,16 @@ class FileManagerApp:
                 file_path TEXT,
                 timestamp TEXT,
                 operator TEXT,
-                version_path TEXT
+                version_path TEXT,
+                comment TEXT DEFAULT ''
             )
-        """)
+        """
+        )
+        # Try to add comment column if missing (for upgrades)
+        try:
+            self.db_cursor.execute("ALTER TABLE file_versions ADD COLUMN comment TEXT DEFAULT ''")
+        except Exception:
+            pass
         self.db_cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS file_logs (
@@ -160,10 +189,14 @@ class FileManagerApp:
                 action TEXT,
                 detail TEXT
             )
-        """)
+        """
+        )
         self.db_conn.commit()
 
     def build_ui(self):
+        # ...existing code...
+        self.update_folder_label()
+        self.populate_tree()
         # Color palette
         COLOR_PRIMARY = "#F5A623"  # orange
         COLOR_BG = "#F5F7FA"       # very light gray
@@ -219,6 +252,7 @@ class FileManagerApp:
         self.root_path_label.pack(side=tk.LEFT, padx=(5, 10))
         ttk.Button(folder_select_frame, text="Add Folder", command=self.add_folder, style='TButton').pack(side=tk.LEFT)
         ttk.Button(folder_select_frame, text="Clear Folders", command=self.clear_folders, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        ttk.Button(folder_select_frame, text="Remove Selected Folder", command=self.remove_selected_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
         self.cnc_editor_button = ttk.Button(folder_select_frame, text="Open CNC Editor", command=self.open_cnc_editor_folder, style='Accent.TButton')
         self.cnc_editor_button.pack(side=tk.LEFT, padx=(15, 0))
 
@@ -227,15 +261,19 @@ class FileManagerApp:
         tree_frame = ttk.Frame(left_frame, style='TFrame')
         tree_frame.pack(fill=tk.BOTH, expand=True)
 
-        self.tree = ttk.Treeview(tree_frame, columns=("Status",), show="tree headings", style='Treeview')
+        self.tree = ttk.Treeview(tree_frame, columns=("Status", "Comments"), show="tree headings", style='Treeview')
         self.tree.heading("#0", text="File")
         self.tree.heading("Status", text="Status")
+        self.tree.heading("Comments", text="Comments")
         self.tree.column("#0", width=250)
         self.tree.column("Status", width=80)
+        self.tree.column("Comments", width=400, stretch=True)
         tree_scroll = ttk.Scrollbar(tree_frame, orient=tk.VERTICAL, command=self.tree.yview)
-        self.tree.configure(yscrollcommand=tree_scroll.set)
+        tree_scroll_x = ttk.Scrollbar(tree_frame, orient=tk.HORIZONTAL, command=self.tree.xview)
+        self.tree.configure(yscrollcommand=tree_scroll.set, xscrollcommand=tree_scroll_x.set)
         self.tree.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         tree_scroll.pack(fill=tk.Y, side=tk.LEFT)
+        tree_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
         self.tree.bind("<<TreeviewSelect>>", self.on_tree_select)
 
         ttk.Separator(left_frame, orient='horizontal').pack(fill='x', pady=(5, 10))
@@ -352,11 +390,13 @@ class FileManagerApp:
             messagebox.showinfo("Folder already added", "This folder is already opened.")
             return
         self.root_folders.append(folder_path)
+        self.save_root_folders()
         self.update_folder_label()
         self.populate_tree()
 
     def clear_folders(self):
         self.root_folders.clear()
+        self.save_root_folders()
         self.root_path_label.config(text="<none>")
         self.tree.delete(*self.tree.get_children())
         self.selected_file = None
@@ -366,40 +406,45 @@ class FileManagerApp:
         self.clear_compare_area()
         self.clear_file_info()
 
-    def remove_selected_folder(self):
+    def remove_selected_root_folder(self):
+        """Remove only the selected root folder from the opened folders list."""
         selected = self.tree.selection()
         if not selected:
             messagebox.showwarning("Remove Folder", "Select a folder root in the tree first.")
             return
-        path = Path(self.tree.item(selected[0], "values")[1])
-        selected_root = self._find_root_folder(path)
-        if not selected_root:
-            messagebox.showwarning("Remove Folder", "Selected item is not inside an opened root folder.")
+        item = selected[0]
+        values = self.tree.item(item, "values")
+        if len(values) < 2:
+            messagebox.showwarning("Remove Folder", "Select a root folder in the tree.")
             return
-        self.root_folders = [folder for folder in self.root_folders if folder != selected_root]
-        self.update_folder_label()
-        self.selected_file = None
-        self.selected_file_mtime = None
-        self.clear_preview_area()
-        self.clear_edit_area()
-        self.clear_compare_area()
-        self.clear_file_info()
-        self.populate_tree()
-
-    def _find_root_folder(self, path: Path):
-        for folder in self.root_folders:
-            try:
-                if path == folder or folder in path.parents:
-                    return folder
-            except Exception:
-                continue
-        return None
-
-    def populate_tree(self):
-        self.tree.delete(*self.tree.get_children())
-        for folder in self.root_folders:
+        folder_path = Path(values[1])
+        if folder_path in self.root_folders:
+            self.root_folders = [f for f in self.root_folders if f != folder_path]
+            self.save_root_folders()
+            self.update_folder_label()
+            self.populate_tree()
+        else:
+            messagebox.showwarning("Remove Folder", "Selected item is not a root folder.")
+            self.tree.heading("#0", text="File")
+            self.tree.heading("Status", text="Status")
+            self.tree.heading("Comments", text="Comments")
+            self.tree.column("#0", width=250, stretch=False)
+            self.tree.column("Status", width=80, stretch=False)
+            self.tree.column("Comments", width=180, stretch=False)
+            # Fixed size for the treeview
+            self.tree.pack_propagate(False)
+            self.tree.pack(fill=tk.NONE, expand=False, side=tk.LEFT)
+            self.tree.config(height=15)
+            # Always show scrollbars
+            tree_scroll_y = ttk.Scrollbar(tree_frame, orient=tk.VERTICAL, command=self.tree.yview)
+            tree_scroll_x = ttk.Scrollbar(tree_frame, orient=tk.HORIZONTAL, command=self.tree.xview)
+            self.tree.configure(yscrollcommand=tree_scroll_y.set, xscrollcommand=tree_scroll_x.set)
+            tree_scroll_y.pack(fill=tk.Y, side=tk.LEFT)
+            tree_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
+            self.tree.bind("<Button-1>", lambda e: "break" if self.tree.identify_region(e.x, e.y) == "separator" else None)
+            self.tree.bind("<<TreeviewSelect>>", self.on_tree_select)
             if not folder.exists():
-                continue
+                pass
             node = self.tree.insert("", "end", text=folder.name, open=True, values=("", str(folder)))
             self._populate_tree(node, folder)
 
@@ -446,7 +491,7 @@ class FileManagerApp:
         matched = query in path.name.lower()
         for child in sorted(path.iterdir(), key=lambda p: (p.is_file(), p.name.lower())):
             if child.is_dir():
-                child_node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child)))
+                child_node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child), ""))
                 child_matched = self._populate_tree_filtered(child_node, child, query)
                 if not child_matched:
                     self.tree.delete(child_node)
@@ -454,7 +499,7 @@ class FileManagerApp:
                     matched = True
             elif query in child.name.lower():
                 status = "Locked" if self.is_file_locked_for_path(child) else "Unlocked"
-                self.tree.insert(parent, "end", text=child.name, values=(status, str(child)))
+                self.tree.insert(parent, "end", text=child.name, values=(status, str(child), ""))
                 matched = True
         return matched
 
@@ -606,11 +651,20 @@ class FileManagerApp:
         try:
             for child in sorted(path.iterdir(), key=lambda p: (p.is_file(), p.name.lower())):
                 if child.is_dir():
-                    node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child)))
+                    node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child), ""))
                     self._populate_tree(node, child)
                 else:
                     status = "Locked" if self.is_file_locked_for_path(child) else "Unlocked"
-                    self.tree.insert(parent, "end", text=child.name, values=(status, str(child)))
+                    comment = ""
+                    if child.suffix.lower() == ".nc":
+                        self.db_cursor.execute(
+                            "SELECT comment FROM file_versions WHERE file_path = ? ORDER BY id DESC LIMIT 1",
+                            (str(child),)
+                        )
+                        row = self.db_cursor.fetchone()
+                        if row and row[0]:
+                            comment = row[0]
+                    self.tree.insert(parent, "end", text=child.name, values=(status, str(child), comment))
         except PermissionError:
             pass
 
@@ -721,8 +775,14 @@ class FileManagerApp:
         if content == original:
             messagebox.showinfo("No changes", "No changes detected to save.")
             return
+        # Prompt for comment
+        comment = simpledialog.askstring("Save Comment", "Enter a comment for this change:", parent=self.root)
+        if comment is None:
+            messagebox.showinfo("Cancelled", "Save cancelled.")
+            return
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        version_filename = VERSION_DIR / f"{self.selected_file.stem}_{timestamp}{self.selected_file.suffix}"
+        # Store version in the same folder as the original file
+        version_filename = self.selected_file.parent / f"{self.selected_file.stem}_{timestamp}{self.selected_file.suffix}"
         shutil.copy2(self.selected_file, version_filename)
         try:
             with open(self.selected_file, "w", encoding="utf-8", errors="replace") as f:
@@ -732,15 +792,15 @@ class FileManagerApp:
             return
         self.log_action(self.selected_file, "save", f"Saved edit as {version_filename.name}")
         self.db_cursor.execute(
-            "INSERT INTO file_versions (file_path, timestamp, operator, version_path) VALUES (?, ?, ?, ?)",
-            (str(self.selected_file), datetime.now().isoformat(), self.current_role.get(), str(version_filename)),
+            "INSERT INTO file_versions (file_path, timestamp, operator, version_path, comment) VALUES (?, ?, ?, ?, ?)",
+            (str(self.selected_file), datetime.now().isoformat(), self.current_role.get(), str(version_filename), comment),
         )
         self.db_conn.commit()
         self.selected_file_mtime = self.selected_file.stat().st_mtime
         messagebox.showinfo("Saved", "Changes saved and version stored.")
         self.refresh_logs()
         self.show_compare(auto=True)
-        # Allow saving as many times as needed, keep edit area enabled and Save button visible
+        self.populate_tree()
 
     def lock_file(self):
         if not self.selected_file:
