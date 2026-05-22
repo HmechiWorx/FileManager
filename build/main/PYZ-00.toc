@@ -1,234 +1,307 @@
-('C:\\File Management\\build\\main\\PYZ-00.pyz',
+('D:\\Users\\Vkhem\\Desktop\\File Management Copy\\build\\main\\PYZ-00.pyz',
  [('PIL',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\__init__.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\__init__.py',
    'PYMODULE'),
   ('PIL.AvifImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\AvifImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\AvifImagePlugin.py',
    'PYMODULE'),
   ('PIL.BlpImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\BlpImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\BlpImagePlugin.py',
    'PYMODULE'),
   ('PIL.BmpImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\BmpImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\BmpImagePlugin.py',
    'PYMODULE'),
   ('PIL.BufrStubImagePlugin',
-   'C:\\File '
-   'Management\\.venv\\Lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
    'PYMODULE'),
   ('PIL.CurImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\CurImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\CurImagePlugin.py',
    'PYMODULE'),
   ('PIL.DcxImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\DcxImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\DcxImagePlugin.py',
    'PYMODULE'),
   ('PIL.DdsImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\DdsImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\DdsImagePlugin.py',
    'PYMODULE'),
   ('PIL.EpsImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\EpsImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\EpsImagePlugin.py',
    'PYMODULE'),
   ('PIL.ExifTags',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ExifTags.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ExifTags.py',
    'PYMODULE'),
   ('PIL.FitsImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\FitsImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\FitsImagePlugin.py',
    'PYMODULE'),
   ('PIL.FliImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\FliImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\FliImagePlugin.py',
    'PYMODULE'),
   ('PIL.FpxImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\FpxImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\FpxImagePlugin.py',
    'PYMODULE'),
   ('PIL.FtexImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\FtexImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\FtexImagePlugin.py',
    'PYMODULE'),
   ('PIL.GbrImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\GbrImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\GbrImagePlugin.py',
    'PYMODULE'),
   ('PIL.GifImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\GifImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\GifImagePlugin.py',
    'PYMODULE'),
   ('PIL.GimpGradientFile',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\GimpGradientFile.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\GimpGradientFile.py',
    'PYMODULE'),
   ('PIL.GimpPaletteFile',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\GimpPaletteFile.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\GimpPaletteFile.py',
    'PYMODULE'),
   ('PIL.GribStubImagePlugin',
-   'C:\\File '
-   'Management\\.venv\\Lib\\site-packages\\PIL\\GribStubImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\GribStubImagePlugin.py',
    'PYMODULE'),
   ('PIL.Hdf5StubImagePlugin',
-   'C:\\File '
-   'Management\\.venv\\Lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
    'PYMODULE'),
   ('PIL.IcnsImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\IcnsImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\IcnsImagePlugin.py',
    'PYMODULE'),
   ('PIL.IcoImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\IcoImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\IcoImagePlugin.py',
    'PYMODULE'),
   ('PIL.ImImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImImagePlugin.py',
    'PYMODULE'),
   ('PIL.Image',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\Image.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\Image.py',
    'PYMODULE'),
   ('PIL.ImageChops',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageChops.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageChops.py',
    'PYMODULE'),
   ('PIL.ImageCms',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageCms.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageCms.py',
    'PYMODULE'),
   ('PIL.ImageColor',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageColor.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageColor.py',
    'PYMODULE'),
   ('PIL.ImageFile',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageFile.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageFile.py',
    'PYMODULE'),
   ('PIL.ImageFilter',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageFilter.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageFilter.py',
    'PYMODULE'),
   ('PIL.ImageMath',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageMath.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageMath.py',
    'PYMODULE'),
   ('PIL.ImageMode',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageMode.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageMode.py',
    'PYMODULE'),
   ('PIL.ImageOps',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageOps.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageOps.py',
    'PYMODULE'),
   ('PIL.ImagePalette',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImagePalette.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImagePalette.py',
    'PYMODULE'),
   ('PIL.ImageQt',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageQt.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageQt.py',
    'PYMODULE'),
   ('PIL.ImageSequence',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageSequence.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageSequence.py',
    'PYMODULE'),
   ('PIL.ImageShow',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageShow.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageShow.py',
    'PYMODULE'),
   ('PIL.ImageTk',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageTk.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageTk.py',
    'PYMODULE'),
   ('PIL.ImageWin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImageWin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageWin.py',
    'PYMODULE'),
   ('PIL.ImtImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\ImtImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImtImagePlugin.py',
    'PYMODULE'),
   ('PIL.IptcImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\IptcImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\IptcImagePlugin.py',
    'PYMODULE'),
   ('PIL.Jpeg2KImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
    'PYMODULE'),
   ('PIL.JpegImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\JpegImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\JpegImagePlugin.py',
    'PYMODULE'),
   ('PIL.JpegPresets',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\JpegPresets.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\JpegPresets.py',
    'PYMODULE'),
   ('PIL.McIdasImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\McIdasImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\McIdasImagePlugin.py',
    'PYMODULE'),
   ('PIL.MicImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\MicImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\MicImagePlugin.py',
    'PYMODULE'),
   ('PIL.MpegImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\MpegImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\MpegImagePlugin.py',
    'PYMODULE'),
   ('PIL.MpoImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\MpoImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\MpoImagePlugin.py',
    'PYMODULE'),
   ('PIL.MspImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\MspImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\MspImagePlugin.py',
    'PYMODULE'),
   ('PIL.PaletteFile',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PaletteFile.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PaletteFile.py',
    'PYMODULE'),
   ('PIL.PalmImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PalmImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PalmImagePlugin.py',
    'PYMODULE'),
   ('PIL.PcdImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PcdImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PcdImagePlugin.py',
    'PYMODULE'),
   ('PIL.PcxImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PcxImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PcxImagePlugin.py',
    'PYMODULE'),
   ('PIL.PdfImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PdfImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PdfImagePlugin.py',
    'PYMODULE'),
   ('PIL.PdfParser',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PdfParser.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PdfParser.py',
    'PYMODULE'),
   ('PIL.PixarImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PixarImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PixarImagePlugin.py',
    'PYMODULE'),
   ('PIL.PngImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PngImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PngImagePlugin.py',
    'PYMODULE'),
   ('PIL.PpmImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PpmImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PpmImagePlugin.py',
    'PYMODULE'),
   ('PIL.PsdImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\PsdImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\PsdImagePlugin.py',
    'PYMODULE'),
   ('PIL.QoiImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\QoiImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\QoiImagePlugin.py',
    'PYMODULE'),
   ('PIL.SgiImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\SgiImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\SgiImagePlugin.py',
    'PYMODULE'),
   ('PIL.SpiderImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\SpiderImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\SpiderImagePlugin.py',
    'PYMODULE'),
   ('PIL.SunImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\SunImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\SunImagePlugin.py',
    'PYMODULE'),
   ('PIL.TgaImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\TgaImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\TgaImagePlugin.py',
    'PYMODULE'),
   ('PIL.TiffImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\TiffImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\TiffImagePlugin.py',
    'PYMODULE'),
   ('PIL.TiffTags',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\TiffTags.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\TiffTags.py',
    'PYMODULE'),
   ('PIL.WebPImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\WebPImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\WebPImagePlugin.py',
    'PYMODULE'),
   ('PIL.WmfImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\WmfImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\WmfImagePlugin.py',
    'PYMODULE'),
   ('PIL.XVThumbImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
    'PYMODULE'),
   ('PIL.XbmImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\XbmImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\XbmImagePlugin.py',
    'PYMODULE'),
   ('PIL.XpmImagePlugin',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\XpmImagePlugin.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\XpmImagePlugin.py',
    'PYMODULE'),
   ('PIL._binary',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\_binary.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\_binary.py',
    'PYMODULE'),
   ('PIL._deprecate',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\_deprecate.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\_deprecate.py',
    'PYMODULE'),
   ('PIL._typing',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\_typing.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\_typing.py',
    'PYMODULE'),
   ('PIL._util',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\_util.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\_util.py',
    'PYMODULE'),
   ('PIL._version',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\_version.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\_version.py',
    'PYMODULE'),
   ('PIL.features',
-   'C:\\File Management\\.venv\\Lib\\site-packages\\PIL\\features.py',
+   'D:\\Users\\Vkhem\\Desktop\\File Management '
+   'Copy\\.venv\\Lib\\site-packages\\PIL\\features.py',
    'PYMODULE'),
   ('__future__',
    'C:\\Program '

@@ -702,7 +702,8 @@ class FileManagerApp:
         self.preview_text.config(state=tk.NORMAL)
         self.preview_text.delete("1.0", tk.END)
         ext = file_path.suffix.lower()
-        if ext in {".txt", ".nc"}:
+        # Allow preview for .txt, .nc, .h, .mpf, .ncp files as text
+        if ext in {".txt", ".nc", ".h", ".mpf", ".ncp"}:
             try:
                 with open(file_path, "r", encoding="utf-8", errors="replace") as f:
                     content = f.read(20000)
