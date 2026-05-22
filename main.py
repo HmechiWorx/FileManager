@@ -58,9 +58,6 @@ class FileManagerApp:
         self.root_folders = []
         self.load_root_folders()
         self.save_root_folders()
-        self.update_folder_label()
-        self.populate_tree()
-        self.load_root_folders()
         self.selected_file = None
         self.selected_file_mtime = None
         self.image_preview = None
@@ -76,6 +73,9 @@ class FileManagerApp:
         self.db_cursor = self.db_conn.cursor()
         self.setup_db()
         self.build_ui()
+        self.update_folder_label()
+        self.populate_tree()
+        self.load_root_folders()
         self.start_file_monitor()
 
     def get_machine_id(self):
