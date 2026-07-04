@@ -1,7 +1,6 @@
 import os, shutil, sqlite3, threading, time, difflib
 from datetime import datetime
 from pathlib import Path
-from PIL import Image, ImageTk
 
 import tkinter as tk
 from tkinter import filedialog, messagebox, simpledialog, ttk
@@ -714,7 +713,6 @@ class FileManagerApp:
                 self.preview_text.insert(tk.END, f"Unable to read file: {e}")
         elif ext in {".jpg", ".jpeg", ".png", ".gif"}:
             try:
-                from PIL import Image, ImageTk
                 image = Image.open(file_path)
                 image.thumbnail((600, 500))
                 self.image_preview = ImageTk.PhotoImage(image)
