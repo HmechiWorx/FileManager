@@ -883,7 +883,6 @@ class FileManagerApp:
 
     def on_view_tree_select(self, event=None):
         # Middle section is destination/view-only. Its selection must not affect
-        # the active file preview/info shown from the left section.
         return
 
     def display_file_in_edit_tab(self, file_path: Path):
