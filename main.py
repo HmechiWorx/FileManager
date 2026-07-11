@@ -1,4 +1,4 @@
-import os, shutil, sqlite3, threading, time, difflib
+import os, shutil, sqlite3, threading, time, difflib, sys
 from datetime import datetime
 from pathlib import Path
 
@@ -11,28 +11,43 @@ try:
 except ImportError:
     PIL_AVAILABLE = False
 
-DB_FILE = Path("file_manager.db")
-VERSION_DIR = Path("versions")
+APP_DIR = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else Path(__file__).resolve().parent
+DB_FILE = APP_DIR / "file_manager.db"
+VERSION_DIR = APP_DIR / "versions"
 LOCK_PASSWORD = "123"
+ROOT_FOLDERS_FILE = APP_DIR / "root_folders.txt"
+MIDDLE_ROOT_FOLDERS_FILE = APP_DIR / "middle_root_folders.txt"
 
 class FileManagerApp:
     def save_root_folders(self):
-        """Save the list of root folders to a file for persistence."""
+        """Save both left and middle opened-folder lists for persistence."""
         try:
-            with open("root_folders.txt", "w", encoding="utf-8") as f:
+            with open(ROOT_FOLDERS_FILE, "w", encoding="utf-8") as f:
                 for folder in self.root_folders:
+                    f.write(str(folder) + "\n")
+        except Exception:
+            pass
+        try:
+            with open(MIDDLE_ROOT_FOLDERS_FILE, "w", encoding="utf-8") as f:
+                for folder in self.middle_root_folders:
                     f.write(str(folder) + "\n")
         except Exception:
             pass
 
     def load_root_folders(self):
-        """Load the list of root folders from a file if it exists."""
+        """Load both left and middle opened-folder lists if files exist."""
         try:
-            if os.path.exists("root_folders.txt"):
-                with open("root_folders.txt", "r", encoding="utf-8") as f:
+            if ROOT_FOLDERS_FILE.exists():
+                with open(ROOT_FOLDERS_FILE, "r", encoding="utf-8") as f:
                     self.root_folders = [Path(line.strip()) for line in f if line.strip()]
         except Exception:
             self.root_folders = []
+        try:
+            if MIDDLE_ROOT_FOLDERS_FILE.exists():
+                with open(MIDDLE_ROOT_FOLDERS_FILE, "r", encoding="utf-8") as f:
+                    self.middle_root_folders = [Path(line.strip()) for line in f if line.strip()]
+        except Exception:
+            self.middle_root_folders = []
     def open_cnc_editor_folder(self):
         os.startfile(r"D:\Program Files (x86)\CNC Syntax Editor\cncsyn.exe")
 
@@ -55,6 +70,7 @@ class FileManagerApp:
 
         # --- Folder persistence ---
         self.root_folders = []
+        self.middle_root_folders = []
         self.load_root_folders()
         self.save_root_folders()
         self.selected_file = None
@@ -66,15 +82,17 @@ class FileManagerApp:
         self.draw_search_var = tk.StringVar()
         self.desc_search_var = tk.StringVar()
         self.cust_search_var = tk.StringVar()
+        self._live_filter_after_id = None
 
         VERSION_DIR.mkdir(parents=True, exist_ok=True)
         self.db_conn = sqlite3.connect(DB_FILE)
         self.db_cursor = self.db_conn.cursor()
         self.setup_db()
         self.build_ui()
+        for var in (self.search_var, self.part_search_var, self.draw_search_var, self.desc_search_var, self.cust_search_var):
+            var.trace_add("write", self.on_live_filter_change)
         self.update_folder_label()
         self.populate_tree()
-        self.load_root_folders()
         self.start_file_monitor()
 
     def get_machine_id(self):
@@ -234,35 +252,62 @@ class FileManagerApp:
             logo_label.pack(side=tk.LEFT, padx=(20, 10), pady=5)
         header_label = tk.Label(header, text="Advanced File Management System", bg=COLOR_PRIMARY, fg=COLOR_DARK, font=("Helvetica", 18, "bold"), pady=18)
         header_label.pack(side=tk.LEFT, padx=10)
+        self.cnc_editor_button = ttk.Button(header, text="Open CNC Editor", command=self.open_cnc_editor_folder, style='Accent.TButton')
+        self.cnc_editor_button.pack(side=tk.RIGHT, padx=(0, 20), pady=14)
 
-        main_pane = ttk.PanedWindow(self.root, orient=tk.HORIZONTAL)
-        main_pane.pack(fill=tk.BOTH, expand=True)
+        self.main_pane = ttk.PanedWindow(self.root, orient=tk.HORIZONTAL)
+        self.main_pane.pack(fill=tk.BOTH, expand=True)
 
-        left_frame = ttk.Frame(main_pane, padding=10, style='TFrame')
-        right_frame = ttk.Frame(main_pane, padding=10, style='TFrame')
-        main_pane.add(left_frame, weight=1)
-        main_pane.add(right_frame, weight=2)
+        self.left_frame = ttk.Frame(self.main_pane, padding=10, style='TFrame')
+        self.middle_frame = ttk.Frame(self.main_pane, padding=10, style='TFrame')
+        self.right_frame = ttk.Frame(self.main_pane, padding=10, style='TFrame')
+        self.main_pane.add(self.left_frame, weight=4)
+        self.main_pane.add(self.middle_frame, weight=3)
+        self.main_pane.add(self.right_frame, weight=3)
 
-        folder_select_frame = ttk.Frame(left_frame, style='TFrame')
+        action_frame = ttk.Frame(self.left_frame, padding=(0, 8, 0, 0), style='TFrame')
+        action_frame.pack(fill=tk.X, pady=(0, 8))
+        ttk.Label(action_frame, text="Current role:", style='TLabel').grid(row=0, column=0, sticky=tk.W)
+        ttk.Radiobutton(action_frame, text="Operator", variable=self.current_role, value="operator", command=self.on_role_change, style='TRadiobutton').grid(row=0, column=1, sticky=tk.W)
+        ttk.Radiobutton(action_frame, text="Supervisor", variable=self.current_role, value="supervisor", command=self.on_role_change, style='TRadiobutton').grid(row=0, column=2, sticky=tk.W)
+
+        self.lock_status_label = ttk.Label(action_frame, text="File locked: ", style='TLabel')
+        self.lock_status_label.grid(row=1, column=0, columnspan=3, sticky=tk.W, pady=(4, 8))
+
+        buttons_frame = ttk.Frame(action_frame, style='TFrame')
+        buttons_frame.grid(row=2, column=0, columnspan=3, sticky=tk.EW)
+        buttons_frame.columnconfigure(0, weight=1)
+        buttons_frame.columnconfigure(1, weight=1)
+        buttons_frame.columnconfigure(2, weight=2)
+        buttons_frame.columnconfigure(3, weight=1)
+        self.lock_button = ttk.Button(buttons_frame, text="Lock File", command=self.lock_file, style='TButton')
+        self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
+        self.unlock_button = ttk.Button(buttons_frame, text="Unlock File", command=self.unlock_file, style='TButton')
+        self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
+        self.send_button = ttk.Button(buttons_frame, text="Send to Target Folder", command=self.send_file_to_target, style='Accent.TButton')
+        self.send_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
+        self.send_arrow_button = ttk.Button(buttons_frame, text="->", command=self.send_file_to_middle_folder, style='Accent.TButton', width=4)
+        self.send_arrow_button.grid(row=0, column=3, sticky=tk.EW)
+        self.update_button_visibility()
+
+        folder_select_frame = ttk.Frame(self.left_frame, style='TFrame')
         folder_select_frame.pack(fill=tk.X, pady=(0, 10))
-        ttk.Label(folder_select_frame, text="Opened folders:", style='TLabel').pack(side=tk.LEFT)
+        ttk.Label(folder_select_frame, text="Opened:", style='TLabel').pack(side=tk.LEFT)
         self.root_path_label = ttk.Label(folder_select_frame, text="<none>", style='TLabel')
         self.root_path_label.pack(side=tk.LEFT, padx=(5, 10))
         ttk.Button(folder_select_frame, text="Add Folder", command=self.add_folder, style='TButton').pack(side=tk.LEFT)
         ttk.Button(folder_select_frame, text="Clear Folders", command=self.clear_folders, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
-        ttk.Button(folder_select_frame, text="Remove Selected Folder", command=self.remove_selected_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
-        self.cnc_editor_button = ttk.Button(folder_select_frame, text="Open CNC Editor", command=self.open_cnc_editor_folder, style='Accent.TButton')
-        self.cnc_editor_button.pack(side=tk.LEFT, padx=(15, 0))
+        ttk.Button(folder_select_frame, text="Remove Folder", command=self.remove_selected_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
 
-        ttk.Separator(left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
+        ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
 
-        tree_frame = ttk.Frame(left_frame, style='TFrame')
+        tree_frame = ttk.Frame(self.left_frame, style='TFrame')
         tree_frame.pack(fill=tk.BOTH, expand=True)
 
         self.tree = ttk.Treeview(tree_frame, columns=("Status", "Comments"), show="tree headings", style='Treeview')
         self.tree.heading("#0", text="File")
         self.tree.heading("Status", text="Status")
-        self.tree.heading("Comments", text="Comments")
+        self.tree.heading("Comments", text="Location")
         self.tree.column("#0", width=250)
         self.tree.column("Status", width=80)
         self.tree.column("Comments", width=400, stretch=True)
@@ -274,60 +319,64 @@ class FileManagerApp:
         tree_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
         self.tree.bind("<<TreeviewSelect>>", self.on_tree_select)
 
-        ttk.Separator(left_frame, orient='horizontal').pack(fill='x', pady=(5, 10))
+        ttk.Separator(self.middle_frame, orient='horizontal').pack(fill='x', pady=(0, 5))
+        middle_label = ttk.Label(self.middle_frame, text="View Only", style='TLabel')
+        middle_label.pack(anchor=tk.W, pady=(0, 5))
 
-        search_frame = ttk.Frame(left_frame, padding=(0, 10, 0, 0), style='TFrame')
+        middle_controls_frame = ttk.Frame(self.middle_frame, style='TFrame')
+        middle_controls_frame.pack(fill=tk.X, pady=(0, 6))
+        ttk.Button(middle_controls_frame, text="Add Folder", command=self.add_middle_folder, style='TButton').pack(side=tk.LEFT)
+        ttk.Button(middle_controls_frame, text="Clear Folders", command=self.clear_middle_folders, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+
+        middle_tree_frame = ttk.Frame(self.middle_frame, style='TFrame')
+        middle_tree_frame.pack(fill=tk.BOTH, expand=True)
+
+        self.view_tree = ttk.Treeview(middle_tree_frame, columns=("Status", "Comments"), show="tree headings", style='Treeview')
+        self.view_tree.heading("#0", text="File")
+        self.view_tree.heading("Status", text="Status")
+        self.view_tree.heading("Comments", text="Location")
+        self.view_tree.column("#0", width=170, stretch=True)
+        self.view_tree.column("Status", width=80, stretch=False)
+        self.view_tree.column("Comments", width=170, stretch=True)
+        view_tree_scroll = ttk.Scrollbar(middle_tree_frame, orient=tk.VERTICAL, command=self.view_tree.yview)
+        self.view_tree.configure(yscrollcommand=view_tree_scroll.set)
+        self.view_tree.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
+        view_tree_scroll.pack(fill=tk.Y, side=tk.LEFT)
+        self.view_tree.bind("<<TreeviewSelect>>", self.on_view_tree_select)
+
+        ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(5, 10))
+
+        search_frame = ttk.Frame(self.left_frame, padding=(0, 10, 0, 0), style='TFrame')
         search_frame.pack(fill=tk.X)
         ttk.Label(search_frame, text="Search file/folder:", style='TLabel').pack(side=tk.LEFT)
         self.search_entry = ttk.Entry(search_frame, textvariable=self.search_var)
         self.search_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(5, 5))
         ttk.Button(search_frame, text="Search", command=self.search_tree, style='Accent.TButton').pack(side=tk.LEFT)
-        ttk.Button(search_frame, text="Clear Search", command=self.clear_search, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        ttk.Button(search_frame, text="Clear", command=self.clear_search, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
 
-        ttk.Separator(left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
+        ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
 
-        field_search_frame = ttk.Frame(left_frame, padding=(0, 10, 0, 0), style='TFrame')
+        field_search_frame = ttk.Frame(self.left_frame, padding=(0, 10, 0, 0), style='TFrame')
         field_search_frame.pack(fill=tk.X)
-        ttk.Label(field_search_frame, text="Search fields:", style='TLabel').grid(row=0, column=0, columnspan=4, sticky=tk.W)
+        ttk.Label(field_search_frame, text="Search fields:", style='TLabel').grid(row=0, column=0, columnspan=8, sticky=tk.W)
         ttk.Label(field_search_frame, text="part:", style='TLabel').grid(row=1, column=0, sticky=tk.W, pady=(5, 0))
-        ttk.Entry(field_search_frame, textvariable=self.part_search_var, width=15).grid(row=1, column=1, sticky=tk.W, padx=(5, 10), pady=(5, 0))
+        ttk.Entry(field_search_frame, textvariable=self.part_search_var, width=10).grid(row=1, column=1, sticky=tk.W, padx=(5, 10), pady=(5, 0))
         ttk.Label(field_search_frame, text="draw:", style='TLabel').grid(row=1, column=2, sticky=tk.W, pady=(5, 0))
-        ttk.Entry(field_search_frame, textvariable=self.draw_search_var, width=15).grid(row=1, column=3, sticky=tk.W, padx=(5, 0), pady=(5, 0))
-        ttk.Label(field_search_frame, text="desc:", style='TLabel').grid(row=2, column=0, sticky=tk.W, pady=(5, 0))
-        ttk.Entry(field_search_frame, textvariable=self.desc_search_var, width=15).grid(row=2, column=1, sticky=tk.W, padx=(5, 10), pady=(5, 0))
-        ttk.Label(field_search_frame, text="cust:", style='TLabel').grid(row=2, column=2, sticky=tk.W, pady=(5, 0))
-        ttk.Entry(field_search_frame, textvariable=self.cust_search_var, width=15).grid(row=2, column=3, sticky=tk.W, padx=(5, 0), pady=(5, 0))
-        ttk.Button(field_search_frame, text="Search", command=self.search_nc_fields, style='Accent.TButton').grid(row=3, column=0, columnspan=4, sticky=tk.W, pady=(8, 0))
+        ttk.Entry(field_search_frame, textvariable=self.draw_search_var, width=10).grid(row=1, column=3, sticky=tk.W, padx=(5, 10), pady=(5, 0))
+        ttk.Label(field_search_frame, text="desc:", style='TLabel').grid(row=1, column=4, sticky=tk.W, pady=(5, 0))
+        ttk.Entry(field_search_frame, textvariable=self.desc_search_var, width=10).grid(row=1, column=5, sticky=tk.W, padx=(5, 10), pady=(5, 0))
+        ttk.Label(field_search_frame, text="cust:", style='TLabel').grid(row=1, column=6, sticky=tk.W, pady=(5, 0))
+        ttk.Entry(field_search_frame, textvariable=self.cust_search_var, width=10).grid(row=1, column=7, sticky=tk.W, padx=(5, 0), pady=(5, 0))
+        ttk.Button(field_search_frame, text="Search", command=self.search_nc_fields, style='Accent.TButton').grid(row=2, column=0, columnspan=8, sticky=tk.W, pady=(8, 0))
 
-        ttk.Separator(left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
+        ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
 
-        action_frame = ttk.Frame(left_frame, padding=(0, 10, 0, 0), style='TFrame')
-        action_frame.pack(fill=tk.X)
-        ttk.Label(action_frame, text="Current role:", style='TLabel').grid(row=0, column=0, sticky=tk.W)
-        ttk.Radiobutton(action_frame, text="Operator", variable=self.current_role, value="operator", command=self.on_role_change, style='TRadiobutton').grid(row=0, column=1, sticky=tk.W)
-        ttk.Radiobutton(action_frame, text="Supervisor", variable=self.current_role, value="supervisor", command=self.on_role_change, style='TRadiobutton').grid(row=0, column=2, sticky=tk.W)
-
-        self.lock_status_label = ttk.Label(action_frame, text="File locked: ", style='TLabel')
-        self.lock_status_label.grid(row=1, column=0, columnspan=3, sticky=tk.W, pady=(4, 8))
-
-        buttons_frame = ttk.Frame(action_frame, style='TFrame')
-        buttons_frame.grid(row=2, column=0, columnspan=3, sticky=tk.W)
-        self.lock_button = ttk.Button(buttons_frame, text="Lock File", command=self.lock_file, style='TButton')
-        self.lock_button.grid(row=0, column=0, padx=(0, 5))
-        self.unlock_button = ttk.Button(buttons_frame, text="Unlock File", command=self.unlock_file, style='TButton')
-        self.unlock_button.grid(row=0, column=1, padx=(0, 5))
-        self.send_button = ttk.Button(buttons_frame, text="Send to Target Folder", command=self.send_file_to_target, style='Accent.TButton')
-        self.send_button.grid(row=0, column=2, padx=(0, 5))
-        self.update_button_visibility()
-
-        ttk.Separator(left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
-
-        status_frame = ttk.Frame(right_frame, padding=(0, 0, 0, 5), style='TFrame')
+        status_frame = ttk.Frame(self.right_frame, padding=(0, 0, 0, 5), style='TFrame')
         status_frame.pack(fill=tk.X)
         self.file_info_label = ttk.Label(status_frame, text="No file selected", anchor=tk.W, justify=tk.LEFT, style='TLabel')
         self.file_info_label.pack(fill=tk.X)
 
-        right_tabs = ttk.Notebook(right_frame)
+        right_tabs = ttk.Notebook(self.right_frame)
         right_tabs.pack(fill=tk.BOTH, expand=True)
 
         preview_tab = ttk.Frame(right_tabs, style='TFrame')
@@ -378,6 +427,24 @@ class FileManagerApp:
         self.log_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         log_scroll.pack(fill=tk.Y, side=tk.LEFT)
         self.refresh_logs()
+        # Apply layout after widgets are realized; repeat once to avoid startup collapse.
+        self.root.after_idle(self._set_initial_pane_layout)
+        self.root.after(250, self._set_initial_pane_layout)
+
+    def _set_initial_pane_layout(self):
+        # Keep a stable 3-pane layout so middle section remains visible and separate.
+        try:
+            self.root.update_idletasks()
+            total_width = max(self.main_pane.winfo_width(), self.root.winfo_width(), 1200)
+            left_width = int(total_width * 0.40)
+            middle_width = int(total_width * 0.30)
+            # Respect minimum pane widths.
+            left_width = max(left_width, 320)
+            middle_width = max(middle_width, 220)
+            self.main_pane.sashpos(0, left_width)
+            self.main_pane.sashpos(1, left_width + middle_width)
+        except Exception:
+            pass
 
     def add_folder(self):
         folder = filedialog.askdirectory(title="Select a folder to add")
@@ -403,6 +470,24 @@ class FileManagerApp:
         self.clear_edit_area()
         self.clear_compare_area()
         self.clear_file_info()
+
+    def add_middle_folder(self):
+        folder = filedialog.askdirectory(title="Select a folder to add to middle section")
+        if not folder:
+            return
+        folder_path = Path(folder)
+        if folder_path in self.middle_root_folders:
+            messagebox.showinfo("Folder already added", "This folder is already opened in middle section.")
+            return
+        self.middle_root_folders.append(folder_path)
+        self.save_root_folders()
+        self.populate_middle_tree()
+
+    def clear_middle_folders(self):
+        self.middle_root_folders.clear()
+        self.save_root_folders()
+        if hasattr(self, "view_tree"):
+            self.view_tree.delete(*self.view_tree.get_children())
 
     def remove_selected_root_folder(self):
         """Remove only the selected root folder from the opened folders list."""
@@ -440,6 +525,17 @@ class FileManagerApp:
                 continue
             node = self.tree.insert("", "end", text=folder.name, open=True, values=("", str(folder)))
             self._populate_tree(node, folder)
+        self.populate_middle_tree()
+
+    def populate_middle_tree(self):
+        if not hasattr(self, "view_tree"):
+            return
+        self.view_tree.delete(*self.view_tree.get_children())
+        for folder in self.middle_root_folders:
+            if not folder.exists():
+                continue
+            view_node = self.view_tree.insert("", "end", text=folder.name, open=True, values=("", str(folder)))
+            self._populate_tree_view(view_node, folder)
 
     def update_folder_label(self):
         if not self.root_folders:
@@ -457,6 +553,9 @@ class FileManagerApp:
             messagebox.showinfo("Search", "Please enter text to search.")
             return
 
+        self._filter_tree_by_name(query, show_messages=True, select_first=True)
+
+    def _filter_tree_by_name(self, query: str, show_messages: bool = False, select_first: bool = False):
         self.tree.delete(*self.tree.get_children())
         total_matches = 0
         for folder in self.root_folders:
@@ -469,16 +568,19 @@ class FileManagerApp:
                 self.tree.delete(root_node)
 
         if total_matches == 0:
-            messagebox.showinfo("Search", "No matching files or folders found.")
-            self.populate_tree()
+            if show_messages:
+                messagebox.showinfo("Search", "No matching files or folders found.")
             return
 
-        first_item = self.tree.get_children()[0] if self.tree.get_children() else None
-        if first_item:
-            self.tree.selection_set(first_item)
-            self.tree.see(first_item)
-            self.on_tree_select()
-        messagebox.showinfo("Search", f"Filtered tree to matching items.")
+        if select_first:
+            first_item = self.tree.get_children()[0] if self.tree.get_children() else None
+            if first_item:
+                self.tree.selection_set(first_item)
+                self.tree.see(first_item)
+                self.on_tree_select()
+
+        if show_messages:
+            messagebox.showinfo("Search", f"Filtered tree to matching items.")
 
     def _populate_tree_filtered(self, parent, path: Path, query: str) -> bool:
         matched = query in path.name.lower()
@@ -502,10 +604,9 @@ class FileManagerApp:
         self.tree.selection_remove(self.tree.selection())
 
     def search_nc_fields(self):
-        if not self.root_folders:
-            messagebox.showwarning("Search", "No folders are opened. Add a folder first.")
-            return
+        self._filter_tree_by_nc_fields(show_messages=True)
 
+    def _get_nc_field_matches(self):
         search_values = {
             "N0010": self.part_search_var.get().strip().lower(),
             "N0020": self.draw_search_var.get().strip().lower(),
@@ -513,11 +614,11 @@ class FileManagerApp:
             "N0040": self.cust_search_var.get().strip().lower(),
         }
         active_searches = {tag: value for tag, value in search_values.items() if value}
-        if not active_searches:
-            messagebox.showinfo("Search", "Enter at least one value for part, draw, desc, or cust.")
-            return
 
         results = []
+        if not active_searches:
+            return active_searches, results
+
         for folder in self.root_folders:
             for path in folder.rglob("*.nc"):
                 try:
@@ -534,10 +635,80 @@ class FileManagerApp:
                             matches[tag] = line.strip()
                 if all(value is not None for value in matches.values()):
                     results.append((path, matches))
-        if not results:
-            messagebox.showinfo("Search", "No matching entries found.")
+        return active_searches, results
+
+    def _populate_tree_from_file_matches(self, parent, path: Path, matched_files: set[Path]) -> bool:
+        has_match = False
+        try:
+            for child in sorted(path.iterdir(), key=lambda p: (p.is_file(), p.name.lower())):
+                if child.is_dir():
+                    node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child), ""))
+                    child_match = self._populate_tree_from_file_matches(node, child, matched_files)
+                    if not child_match:
+                        self.tree.delete(node)
+                    else:
+                        has_match = True
+                elif child in matched_files:
+                    status = "Locked" if self.is_file_locked_for_path(child) else "Unlocked"
+                    self.tree.insert(parent, "end", text=child.name, values=(status, str(child), ""))
+                    has_match = True
+        except PermissionError:
+            return has_match
+        return has_match
+
+    def _filter_tree_by_nc_fields(self, show_messages: bool = False):
+        if not self.root_folders:
+            if show_messages:
+                messagebox.showwarning("Search", "No folders are opened. Add a folder first.")
             return
-        self.show_nc_search_results(results)
+
+        active_searches, results = self._get_nc_field_matches()
+        if not active_searches:
+            if show_messages:
+                messagebox.showinfo("Search", "Enter at least one value for part, draw, desc, or cust.")
+            query = self.search_var.get().strip().lower()
+            if query:
+                self._filter_tree_by_name(query, show_messages=False, select_first=False)
+            else:
+                self.populate_tree()
+            return
+
+        matched_files = {path for path, _ in results}
+        self.tree.delete(*self.tree.get_children())
+        for folder in self.root_folders:
+            if not folder.exists():
+                continue
+            root_node = self.tree.insert("", "end", text=folder.name, open=True, values=("", str(folder)))
+            if not self._populate_tree_from_file_matches(root_node, folder, matched_files):
+                self.tree.delete(root_node)
+
+        if show_messages and not results:
+            messagebox.showinfo("Search", "No matching entries found.")
+
+    def on_live_filter_change(self, *_):
+        if self._live_filter_after_id is not None:
+            self.root.after_cancel(self._live_filter_after_id)
+        self._live_filter_after_id = self.root.after(250, self._apply_live_filters)
+
+    def _apply_live_filters(self):
+        self._live_filter_after_id = None
+        has_nc_filters = any(
+            var.get().strip() for var in (
+                self.part_search_var,
+                self.draw_search_var,
+                self.desc_search_var,
+                self.cust_search_var,
+            )
+        )
+        if has_nc_filters:
+            self._filter_tree_by_nc_fields(show_messages=False)
+            return
+
+        query = self.search_var.get().strip().lower()
+        if query:
+            self._filter_tree_by_name(query, show_messages=False, select_first=False)
+        else:
+            self.populate_tree()
 
     def show_nc_search_results(self, results):
         window = tk.Toplevel(self.root)
@@ -623,17 +794,24 @@ class FileManagerApp:
 
     def update_button_visibility(self):
         if self.current_role.get() == "supervisor":
-            self.lock_button.grid()
-            self.unlock_button.grid()
-            self.lock_status_label.grid()
-            self.send_button.grid()
-            self.cnc_editor_button.pack(side=tk.LEFT, padx=(15, 0))
+            self.lock_status_label.grid(row=1, column=0, columnspan=3, sticky=tk.W, pady=(4, 8))
+            self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
+            self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
+            self.send_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
+            self.send_arrow_button.grid(row=0, column=3, sticky=tk.EW)
+            self.lock_button.config(state=tk.NORMAL)
+            self.unlock_button.config(state=tk.NORMAL)
+            self.send_button.config(state=tk.NORMAL)
+            self.send_arrow_button.config(state=tk.NORMAL)
         else:
+            self.lock_status_label.grid_remove()
             self.lock_button.grid_remove()
             self.unlock_button.grid_remove()
-            self.lock_status_label.grid_remove()
             self.send_button.grid_remove()
-            self.cnc_editor_button.pack_forget()
+            self.send_arrow_button.grid_remove()
+
+        # CNC Editor should always remain accessible regardless of role.
+        self.cnc_editor_button.config(state=tk.NORMAL)
 
     def is_file_locked_for_path(self, path):
         self.db_cursor.execute("SELECT action FROM file_logs WHERE file_path = ? ORDER BY id DESC LIMIT 1", (str(path),))
@@ -661,6 +839,27 @@ class FileManagerApp:
         except PermissionError:
             pass
 
+    def _populate_tree_view(self, parent, path: Path):
+        try:
+            for child in sorted(path.iterdir(), key=lambda p: (p.is_file(), p.name.lower())):
+                if child.is_dir():
+                    node = self.view_tree.insert(parent, "end", text=child.name, open=False, values=("", str(child), ""))
+                    self._populate_tree_view(node, child)
+                else:
+                    status = "Locked" if self.is_file_locked_for_path(child) else "Unlocked"
+                    comment = ""
+                    if child.suffix.lower() == ".nc":
+                        self.db_cursor.execute(
+                            "SELECT comment FROM file_versions WHERE file_path = ? ORDER BY id DESC LIMIT 1",
+                            (str(child),)
+                        )
+                        row = self.db_cursor.fetchone()
+                        if row and row[0]:
+                            comment = row[0]
+                    self.view_tree.insert(parent, "end", text=child.name, values=(status, str(child), comment))
+        except PermissionError:
+            pass
+
     def on_tree_select(self, event=None):
         selected = self.tree.selection()
         if not selected:
@@ -681,6 +880,11 @@ class FileManagerApp:
             self.clear_edit_area()
             self.clear_compare_area()
             self.update_file_info(file_path)
+
+    def on_view_tree_select(self, event=None):
+        # Middle section is destination/view-only. Its selection must not affect
+        # the active file preview/info shown from the left section.
+        return
 
     def display_file_in_edit_tab(self, file_path: Path):
         self.edit_text.config(state=tk.NORMAL)
@@ -864,6 +1068,44 @@ class FileManagerApp:
         except Exception as e:
             messagebox.showerror("Copy failed", f"Unable to copy file: {e}")
 
+    def send_file_to_middle_folder(self):
+        if not self.selected_file or not self.selected_file.is_file():
+            messagebox.showwarning("Select file", "Select a source file first.")
+            return
+
+        selected = self.view_tree.selection()
+        if not selected:
+            messagebox.showwarning("Select destination", "Select a destination in the middle section first.")
+            return
+
+        values = self.view_tree.item(selected[0], "values")
+        if len(values) < 2:
+            messagebox.showwarning("Select destination", "Invalid destination selected in middle section.")
+            return
+
+        selected_path = Path(values[1])
+        dest_folder = selected_path if selected_path.is_dir() else selected_path.parent
+        if not dest_folder.exists() or not dest_folder.is_dir():
+            messagebox.showerror("Destination error", "Selected destination folder does not exist.")
+            return
+
+        dest_path = dest_folder / self.selected_file.name
+        try:
+            if self.selected_file.resolve() == dest_path.resolve():
+                messagebox.showinfo("Same location", "Source and destination are the same.")
+                return
+        except Exception:
+            pass
+
+        try:
+            shutil.copy2(self.selected_file, dest_path)
+            self.log_action(self.selected_file, "send", f"Sent to middle folder: {dest_path}")
+            messagebox.showinfo("Sent", f"File copied to {dest_path}")
+            self.refresh_logs()
+            self.populate_middle_tree()
+        except Exception as e:
+            messagebox.showerror("Copy failed", f"Unable to copy file: {e}")
+
     def show_compare(self, auto=False):
         if not self.selected_file or self.selected_file.suffix.lower() != ".nc":
             self.clear_compare_area()
@@ -979,6 +1221,7 @@ class FileManagerApp:
                 self.clear_compare_area()
 
     def on_close(self):
+        self.save_root_folders()
         self.db_conn.close()
         self.root.destroy()
 
