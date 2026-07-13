@@ -288,7 +288,7 @@ class FileManagerApp:
         self.send_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
         self.send_arrow_button = ttk.Button(buttons_frame, text=">>", command=self.show_middle_panel, style='Accent.TButton', width=4)
         self.send_arrow_button.grid(row=0, column=3, padx=(0, 5), sticky=tk.EW)
-        self.open_view_only_button = ttk.Button(buttons_frame, text="Open View Only", command=self.open_view_only_panel, style='TButton')
+        self.open_view_only_button = ttk.Button(buttons_frame, text="Open Machine Folder", command=self.open_view_only_panel, style='TButton')
         self.open_view_only_button.grid(row=0, column=4, sticky=tk.EW)
         self.update_button_visibility()
 
@@ -327,7 +327,7 @@ class FileManagerApp:
         self.middle_frame = ttk.Frame(self.right_frame, style='TFrame')
         middle_header_frame = ttk.Frame(self.middle_frame, style='TFrame')
         middle_header_frame.pack(fill=tk.X, pady=(0, 5))
-        middle_label = ttk.Label(middle_header_frame, text="View Only", style='TLabel')
+        middle_label = ttk.Label(middle_header_frame, text="Machine Folder", style='TLabel')
         middle_label.pack(side=tk.LEFT)
         ttk.Button(middle_header_frame, text="X", command=self.close_middle_panel, style='TButton', width=3).pack(side=tk.RIGHT)
 
