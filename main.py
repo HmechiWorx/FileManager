@@ -17,6 +17,7 @@ VERSION_DIR = APP_DIR / "versions"
 LOCK_PASSWORD = "123"
 ROOT_FOLDERS_FILE = APP_DIR / "root_folders.txt"
 MIDDLE_ROOT_FOLDERS_FILE = APP_DIR / "middle_root_folders.txt"
+EDITABLE_EXTENSIONS = {".txt", ".nc", ".ncp", ".h", ".mpf"}
 
 class FileManagerApp:
     def save_root_folders(self):
@@ -925,7 +926,7 @@ class FileManagerApp:
         self.edit_text.config(state=tk.NORMAL)
         self.edit_text.delete("1.0", tk.END)
         ext = file_path.suffix.lower()
-        if ext in {".txt", ".nc"}:
+        if ext in EDITABLE_EXTENSIONS:
             try:
                 with open(file_path, "r", encoding="utf-8", errors="replace") as f:
                     content = f.read(20000)
@@ -966,10 +967,10 @@ class FileManagerApp:
 
     def on_edit_clicked(self):
         if not self.selected_file:
-            messagebox.showwarning("Select file", "Please select a .nc file in the tree first.")
+            messagebox.showwarning("Select file", "Please select an editable file in the tree first.")
             return
-        if self.selected_file.suffix.lower() != ".nc":
-            messagebox.showwarning("Wrong file type", "Only .nc files can be edited and versioned.")
+        if self.selected_file.suffix.lower() not in EDITABLE_EXTENSIONS:
+            messagebox.showwarning("Wrong file type", "Only .txt, .nc, .ncp, .h, and .mpf files can be edited and versioned.")
             return
         if self.is_file_locked():
             messagebox.showwarning("Locked", "This file is currently locked and cannot be edited.")
@@ -991,13 +992,13 @@ class FileManagerApp:
         if not self.selected_file:
             messagebox.showwarning("Select file", "Select a file before saving.")
             return
-        if self.selected_file.suffix.lower() != ".nc":
-            messagebox.showwarning("Wrong file type", "Only .nc files can be saved from the edit panel.")
+        if self.selected_file.suffix.lower() not in EDITABLE_EXTENSIONS:
+            messagebox.showwarning("Wrong file type", "Only .txt, .nc, .ncp, .h, and .mpf files can be saved from the edit panel.")
             return
         if self.is_file_locked():
             messagebox.showwarning("Locked", "Cannot save edits while the file is locked.")
             return
-        content = self.edit_text.get("1.0", tk.END)
+        content = self.edit_text.get("1.0", "end-1c")
         try:
             with open(self.selected_file, "r", encoding="utf-8", errors="replace") as f:
                 original = f.read()
@@ -1193,10 +1194,10 @@ class FileManagerApp:
             messagebox.showerror("Copy failed", f"Unable to copy file: {e}")
 
     def show_compare(self, auto=False):
-        if not self.selected_file or self.selected_file.suffix.lower() != ".nc":
+        if not self.selected_file or self.selected_file.suffix.lower() not in EDITABLE_EXTENSIONS:
             self.clear_compare_area()
             if not auto:
-                messagebox.showwarning("Select .nc file", "Select a .nc file first.")
+                messagebox.showwarning("Select file", "Select an editable file first.")
             return
         self.db_cursor.execute(
             "SELECT version_path FROM file_versions WHERE file_path = ? ORDER BY id DESC LIMIT 1",
