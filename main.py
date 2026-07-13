@@ -75,6 +75,7 @@ class FileManagerApp:
         self.save_root_folders()
         self.selected_file = None
         self.selected_file_mtime = None
+        self.middle_copy_pending = False
         self.image_preview = None
         self.current_role = tk.StringVar(value="operator")
         self.search_var = tk.StringVar()
@@ -258,12 +259,10 @@ class FileManagerApp:
         self.main_pane = ttk.PanedWindow(self.root, orient=tk.HORIZONTAL)
         self.main_pane.pack(fill=tk.BOTH, expand=True)
 
-        self.left_frame = ttk.Frame(self.main_pane, padding=10, style='TFrame')
-        self.middle_frame = ttk.Frame(self.main_pane, padding=10, style='TFrame')
-        self.right_frame = ttk.Frame(self.main_pane, padding=10, style='TFrame')
+        self.left_frame = ttk.Frame(self.main_pane, width=560, padding=10, style='TFrame')
+        self.right_frame = ttk.Frame(self.main_pane, width=780, padding=10, style='TFrame')
         self.main_pane.add(self.left_frame, weight=4)
-        self.main_pane.add(self.middle_frame, weight=3)
-        self.main_pane.add(self.right_frame, weight=3)
+        self.main_pane.add(self.right_frame, weight=4)
 
         action_frame = ttk.Frame(self.left_frame, padding=(0, 8, 0, 0), style='TFrame')
         action_frame.pack(fill=tk.X, pady=(0, 8))
@@ -280,14 +279,17 @@ class FileManagerApp:
         buttons_frame.columnconfigure(1, weight=1)
         buttons_frame.columnconfigure(2, weight=2)
         buttons_frame.columnconfigure(3, weight=1)
+        buttons_frame.columnconfigure(4, weight=2)
         self.lock_button = ttk.Button(buttons_frame, text="Lock File", command=self.lock_file, style='TButton')
         self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
         self.unlock_button = ttk.Button(buttons_frame, text="Unlock File", command=self.unlock_file, style='TButton')
         self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
         self.send_button = ttk.Button(buttons_frame, text="Send to Target Folder", command=self.send_file_to_target, style='Accent.TButton')
         self.send_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
-        self.send_arrow_button = ttk.Button(buttons_frame, text="->", command=self.send_file_to_middle_folder, style='Accent.TButton', width=4)
-        self.send_arrow_button.grid(row=0, column=3, sticky=tk.EW)
+        self.send_arrow_button = ttk.Button(buttons_frame, text=">>", command=self.show_middle_panel, style='Accent.TButton', width=4)
+        self.send_arrow_button.grid(row=0, column=3, padx=(0, 5), sticky=tk.EW)
+        self.open_view_only_button = ttk.Button(buttons_frame, text="Open View Only", command=self.open_view_only_panel, style='TButton')
+        self.open_view_only_button.grid(row=0, column=4, sticky=tk.EW)
         self.update_button_visibility()
 
         folder_select_frame = ttk.Frame(self.left_frame, style='TFrame')
@@ -319,14 +321,22 @@ class FileManagerApp:
         tree_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
         self.tree.bind("<<TreeviewSelect>>", self.on_tree_select)
 
-        ttk.Separator(self.middle_frame, orient='horizontal').pack(fill='x', pady=(0, 5))
-        middle_label = ttk.Label(self.middle_frame, text="View Only", style='TLabel')
-        middle_label.pack(anchor=tk.W, pady=(0, 5))
+        self.right_normal_frame = ttk.Frame(self.right_frame, style='TFrame')
+        self.right_normal_frame.pack(fill=tk.BOTH, expand=True)
 
+        self.middle_frame = ttk.Frame(self.right_frame, style='TFrame')
+        middle_header_frame = ttk.Frame(self.middle_frame, style='TFrame')
+        middle_header_frame.pack(fill=tk.X, pady=(0, 5))
+        middle_label = ttk.Label(middle_header_frame, text="View Only", style='TLabel')
+        middle_label.pack(side=tk.LEFT)
+        ttk.Button(middle_header_frame, text="X", command=self.close_middle_panel, style='TButton', width=3).pack(side=tk.RIGHT)
+
+        ttk.Separator(self.middle_frame, orient='horizontal').pack(fill='x', pady=(0, 5))
         middle_controls_frame = ttk.Frame(self.middle_frame, style='TFrame')
         middle_controls_frame.pack(fill=tk.X, pady=(0, 6))
         ttk.Button(middle_controls_frame, text="Add Folder", command=self.add_middle_folder, style='TButton').pack(side=tk.LEFT)
         ttk.Button(middle_controls_frame, text="Clear Folders", command=self.clear_middle_folders, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        ttk.Button(middle_controls_frame, text="<<", command=self.send_file_to_left_folder, style='Accent.TButton', width=4).pack(side=tk.LEFT, padx=(5, 0))
 
         middle_tree_frame = ttk.Frame(self.middle_frame, style='TFrame')
         middle_tree_frame.pack(fill=tk.BOTH, expand=True)
@@ -354,48 +364,46 @@ class FileManagerApp:
         ttk.Button(search_frame, text="Search", command=self.search_tree, style='Accent.TButton').pack(side=tk.LEFT)
         ttk.Button(search_frame, text="Clear", command=self.clear_search, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
 
-        ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
+        # ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
+        #
+        # field_search_frame = ttk.Frame(self.left_frame, padding=(0, 10, 0, 0), style='TFrame')
+        # field_search_frame.pack(fill=tk.X)
+        # ttk.Label(field_search_frame, text="Search fields:", style='TLabel').grid(row=0, column=0, columnspan=8, sticky=tk.W)
+        # ttk.Label(field_search_frame, text="part:", style='TLabel').grid(row=1, column=0, sticky=tk.W, pady=(5, 0))
+        # ttk.Entry(field_search_frame, textvariable=self.part_search_var, width=10).grid(row=1, column=1, sticky=tk.W, padx=(5, 10), pady=(5, 0))
+        # ttk.Label(field_search_frame, text="draw:", style='TLabel').grid(row=1, column=2, sticky=tk.W, pady=(5, 0))
+        # ttk.Entry(field_search_frame, textvariable=self.draw_search_var, width=10).grid(row=1, column=3, sticky=tk.W, padx=(5, 10), pady=(5, 0))
+        # ttk.Label(field_search_frame, text="desc:", style='TLabel').grid(row=1, column=4, sticky=tk.W, pady=(5, 0))
+        # ttk.Entry(field_search_frame, textvariable=self.desc_search_var, width=10).grid(row=1, column=5, sticky=tk.W, padx=(5, 10), pady=(5, 0))
+        # ttk.Label(field_search_frame, text="cust:", style='TLabel').grid(row=1, column=6, sticky=tk.W, pady=(5, 0))
+        # ttk.Entry(field_search_frame, textvariable=self.cust_search_var, width=10).grid(row=1, column=7, sticky=tk.W, padx=(5, 0), pady=(5, 0))
+        # ttk.Button(field_search_frame, text="Search", command=self.search_nc_fields, style='Accent.TButton').grid(row=2, column=0, columnspan=8, sticky=tk.W, pady=(8, 0))
+        #
+        # ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
 
-        field_search_frame = ttk.Frame(self.left_frame, padding=(0, 10, 0, 0), style='TFrame')
-        field_search_frame.pack(fill=tk.X)
-        ttk.Label(field_search_frame, text="Search fields:", style='TLabel').grid(row=0, column=0, columnspan=8, sticky=tk.W)
-        ttk.Label(field_search_frame, text="part:", style='TLabel').grid(row=1, column=0, sticky=tk.W, pady=(5, 0))
-        ttk.Entry(field_search_frame, textvariable=self.part_search_var, width=10).grid(row=1, column=1, sticky=tk.W, padx=(5, 10), pady=(5, 0))
-        ttk.Label(field_search_frame, text="draw:", style='TLabel').grid(row=1, column=2, sticky=tk.W, pady=(5, 0))
-        ttk.Entry(field_search_frame, textvariable=self.draw_search_var, width=10).grid(row=1, column=3, sticky=tk.W, padx=(5, 10), pady=(5, 0))
-        ttk.Label(field_search_frame, text="desc:", style='TLabel').grid(row=1, column=4, sticky=tk.W, pady=(5, 0))
-        ttk.Entry(field_search_frame, textvariable=self.desc_search_var, width=10).grid(row=1, column=5, sticky=tk.W, padx=(5, 10), pady=(5, 0))
-        ttk.Label(field_search_frame, text="cust:", style='TLabel').grid(row=1, column=6, sticky=tk.W, pady=(5, 0))
-        ttk.Entry(field_search_frame, textvariable=self.cust_search_var, width=10).grid(row=1, column=7, sticky=tk.W, padx=(5, 0), pady=(5, 0))
-        ttk.Button(field_search_frame, text="Search", command=self.search_nc_fields, style='Accent.TButton').grid(row=2, column=0, columnspan=8, sticky=tk.W, pady=(8, 0))
-
-        ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
-
-        status_frame = ttk.Frame(self.right_frame, padding=(0, 0, 0, 5), style='TFrame')
+        status_frame = ttk.Frame(self.right_normal_frame, padding=(0, 0, 0, 5), style='TFrame')
         status_frame.pack(fill=tk.X)
         self.file_info_label = ttk.Label(status_frame, text="No file selected", anchor=tk.W, justify=tk.LEFT, style='TLabel')
         self.file_info_label.pack(fill=tk.X)
 
-        right_tabs = ttk.Notebook(self.right_frame)
-        right_tabs.pack(fill=tk.BOTH, expand=True)
+        self.right_tabs = ttk.Notebook(self.right_normal_frame)
+        self.right_tabs.pack(fill=tk.BOTH, expand=True)
 
-        preview_tab = ttk.Frame(right_tabs, style='TFrame')
-        edit_tab = ttk.Frame(right_tabs, style='TFrame')
-        compare_tab = ttk.Frame(right_tabs, style='TFrame')
-        log_tab = ttk.Frame(right_tabs, style='TFrame')
-        right_tabs.add(preview_tab, text="Preview")
-        right_tabs.add(edit_tab, text="Edit")
-        right_tabs.add(compare_tab, text="Compare")
-        right_tabs.add(log_tab, text="Logs")
+        preview_tab = ttk.Frame(self.right_tabs, style='TFrame')
+        edit_tab = ttk.Frame(self.right_tabs, style='TFrame')
+        compare_tab = ttk.Frame(self.right_tabs, style='TFrame')
+        log_tab = ttk.Frame(self.right_tabs, style='TFrame')
+        self.right_tabs.add(preview_tab, text="Preview")
+        self.right_tabs.add(edit_tab, text="Edit")
+        self.right_tabs.add(compare_tab, text="Compare")
+        self.right_tabs.add(log_tab, text="Logs")
 
         # Preview
         self.preview_text = tk.Text(preview_tab, wrap="none", state=tk.DISABLED, bg=COLOR_WHITE, fg=COLOR_TEXT)
         preview_scroll_y = ttk.Scrollbar(preview_tab, orient=tk.VERTICAL, command=self.preview_text.yview)
-        preview_scroll_x = ttk.Scrollbar(preview_tab, orient=tk.HORIZONTAL, command=self.preview_text.xview)
-        self.preview_text.configure(yscrollcommand=preview_scroll_y.set, xscrollcommand=preview_scroll_x.set)
+        self.preview_text.configure(yscrollcommand=preview_scroll_y.set)
         self.preview_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         preview_scroll_y.pack(fill=tk.Y, side=tk.LEFT)
-        preview_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
 
         # Edit
         button_frame = ttk.Frame(edit_tab, style='TFrame')
@@ -405,20 +413,16 @@ class FileManagerApp:
 
         self.edit_text = tk.Text(edit_tab, wrap="none", state=tk.NORMAL, bg=COLOR_WHITE, fg=COLOR_TEXT)
         edit_scroll_y = ttk.Scrollbar(edit_tab, orient=tk.VERTICAL, command=self.edit_text.yview)
-        edit_scroll_x = ttk.Scrollbar(edit_tab, orient=tk.HORIZONTAL, command=self.edit_text.xview)
-        self.edit_text.configure(yscrollcommand=edit_scroll_y.set, xscrollcommand=edit_scroll_x.set)
+        self.edit_text.configure(yscrollcommand=edit_scroll_y.set)
         self.edit_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         edit_scroll_y.pack(fill=tk.Y, side=tk.LEFT)
-        edit_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
 
         # Compare Tab
         self.compare_text = tk.Text(compare_tab, wrap="none", state=tk.DISABLED, bg=COLOR_WHITE, fg=COLOR_TEXT)
         compare_scroll_y = ttk.Scrollbar(compare_tab, orient=tk.VERTICAL, command=self.compare_text.yview)
-        compare_scroll_x = ttk.Scrollbar(compare_tab, orient=tk.HORIZONTAL, command=self.compare_text.xview)
-        self.compare_text.configure(yscrollcommand=compare_scroll_y.set, xscrollcommand=compare_scroll_x.set)
+        self.compare_text.configure(yscrollcommand=compare_scroll_y.set)
         self.compare_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         compare_scroll_y.pack(fill=tk.Y, side=tk.LEFT)
-        compare_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
 
         # Logs
         self.log_text = tk.Text(log_tab, wrap="none", state=tk.DISABLED, bg=COLOR_WHITE, fg=COLOR_TEXT)
@@ -427,24 +431,41 @@ class FileManagerApp:
         self.log_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         log_scroll.pack(fill=tk.Y, side=tk.LEFT)
         self.refresh_logs()
-        # Apply layout after widgets are realized; repeat once to avoid startup collapse.
+        # Apply layout after widgets are realized; retry because maximized windows
+        # can report unstable sizes during the first geometry pass.
         self.root.after_idle(self._set_initial_pane_layout)
-        self.root.after(250, self._set_initial_pane_layout)
+        for delay in (100, 250, 500, 1000):
+            self.root.after(delay, self._set_initial_pane_layout)
 
     def _set_initial_pane_layout(self):
-        # Keep a stable 3-pane layout so middle section remains visible and separate.
+        # Keep a stable 2-pane layout; the middle section opens inside the right pane.
         try:
             self.root.update_idletasks()
             total_width = max(self.main_pane.winfo_width(), self.root.winfo_width(), 1200)
-            left_width = int(total_width * 0.40)
-            middle_width = int(total_width * 0.30)
-            # Respect minimum pane widths.
-            left_width = max(left_width, 320)
-            middle_width = max(middle_width, 220)
-            self.main_pane.sashpos(0, left_width)
-            self.main_pane.sashpos(1, left_width + middle_width)
+            left_width = total_width // 2
+            current_left_width = self.main_pane.sashpos(0)
+            if current_left_width != left_width:
+                self.main_pane.sashpos(0, left_width)
         except Exception:
             pass
+
+    def show_middle_panel(self):
+        if not self.selected_file or not self.selected_file.is_file():
+            messagebox.showwarning("Select file", "Select a source file first.")
+            return
+        self.middle_copy_pending = True
+        self.right_normal_frame.pack_forget()
+        self.middle_frame.pack(fill=tk.BOTH, expand=True)
+
+    def open_view_only_panel(self):
+        self.middle_copy_pending = False
+        self.right_normal_frame.pack_forget()
+        self.middle_frame.pack(fill=tk.BOTH, expand=True)
+
+    def close_middle_panel(self):
+        self.middle_copy_pending = False
+        self.middle_frame.pack_forget()
+        self.right_normal_frame.pack(fill=tk.BOTH, expand=True)
 
     def add_folder(self):
         folder = filedialog.askdirectory(title="Select a folder to add")
@@ -798,17 +819,20 @@ class FileManagerApp:
             self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
             self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
             self.send_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
-            self.send_arrow_button.grid(row=0, column=3, sticky=tk.EW)
+            self.send_arrow_button.grid(row=0, column=3, padx=(0, 5), sticky=tk.EW)
+            self.open_view_only_button.grid(row=0, column=4, sticky=tk.EW)
             self.lock_button.config(state=tk.NORMAL)
             self.unlock_button.config(state=tk.NORMAL)
             self.send_button.config(state=tk.NORMAL)
             self.send_arrow_button.config(state=tk.NORMAL)
+            self.open_view_only_button.config(state=tk.NORMAL)
         else:
             self.lock_status_label.grid_remove()
             self.lock_button.grid_remove()
             self.unlock_button.grid_remove()
             self.send_button.grid_remove()
             self.send_arrow_button.grid_remove()
+            self.open_view_only_button.grid_remove()
 
         # CNC Editor should always remain accessible regardless of role.
         self.cnc_editor_button.config(state=tk.NORMAL)
@@ -882,8 +906,20 @@ class FileManagerApp:
             self.update_file_info(file_path)
 
     def on_view_tree_select(self, event=None):
-        # Middle section is destination/view-only. Its selection must not affect
-        return
+        if not self.middle_copy_pending:
+            return
+
+        selected = self.view_tree.selection()
+        if not selected:
+            return
+
+        values = self.view_tree.item(selected[0], "values")
+        if len(values) < 2:
+            return
+
+        selected_path = Path(values[1])
+        if selected_path.is_dir():
+            self.send_file_to_middle_folder()
 
     def display_file_in_edit_tab(self, file_path: Path):
         self.edit_text.config(state=tk.NORMAL)
@@ -1099,8 +1135,59 @@ class FileManagerApp:
         try:
             shutil.copy2(self.selected_file, dest_path)
             self.log_action(self.selected_file, "send", f"Sent to middle folder: {dest_path}")
+            self.middle_copy_pending = False
             messagebox.showinfo("Sent", f"File copied to {dest_path}")
             self.refresh_logs()
+            self.populate_middle_tree()
+            self.close_middle_panel()
+        except Exception as e:
+            messagebox.showerror("Copy failed", f"Unable to copy file: {e}")
+
+    def send_file_to_left_folder(self):
+        selected_source = self.view_tree.selection()
+        if not selected_source:
+            messagebox.showwarning("Select file", "Select a source file in View Only first.")
+            return
+
+        source_values = self.view_tree.item(selected_source[0], "values")
+        if len(source_values) < 2:
+            messagebox.showwarning("Select file", "Invalid View Only selection.")
+            return
+
+        source_file = Path(source_values[1])
+        if not source_file.is_file():
+            messagebox.showwarning("Select file", "Select a file in View Only, not a folder.")
+            return
+
+        selected_dest = self.tree.selection()
+        if not selected_dest:
+            messagebox.showwarning("Select destination", "Select a destination folder in the first section.")
+            return
+
+        dest_values = self.tree.item(selected_dest[0], "values")
+        if len(dest_values) < 2:
+            messagebox.showwarning("Select destination", "Invalid destination selected in first section.")
+            return
+
+        dest_folder = Path(dest_values[1])
+        if not dest_folder.exists() or not dest_folder.is_dir():
+            messagebox.showwarning("Select destination", "Select a folder in the first section.")
+            return
+
+        dest_path = dest_folder / source_file.name
+        try:
+            if source_file.resolve() == dest_path.resolve():
+                messagebox.showinfo("Same location", "Source and destination are the same.")
+                return
+        except Exception:
+            pass
+
+        try:
+            shutil.copy2(source_file, dest_path)
+            self.log_action(source_file, "send", f"Sent to first section folder: {dest_path}")
+            messagebox.showinfo("Sent", f"File copied to {dest_path}")
+            self.refresh_logs()
+            self.populate_tree()
             self.populate_middle_tree()
         except Exception as e:
             messagebox.showerror("Copy failed", f"Unable to copy file: {e}")

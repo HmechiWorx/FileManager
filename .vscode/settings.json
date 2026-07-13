@@ -2,9 +2,9 @@
     "files.readonlyInclude": {
         "{**/.c4z/.extsrcs/*.PROTSYM.cbl,**/.c4z/.extsrcs/*.PROTSYM.listing}": true
     },
-    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv-pylance\\Scripts\\python.exe",
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
     "python.analysis.extraPaths": [
-        "${workspaceFolder}\\.venv-pylance\\Lib\\site-packages"
+        "${workspaceFolder}\\.venv\\Lib\\site-packages"
     ],
     "python-envs.defaultEnvManager": "ms-python.python:system"
 }
