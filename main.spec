@@ -1,15 +1,31 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+from pathlib import Path
+import sys
+
+python_home = Path(sys.base_prefix)
+tcl_root = python_home / 'tcl'
+tk_dll_dir = python_home / 'DLLs'
+tk_binaries = [
+    (str(tk_dll_dir / '_tkinter.pyd'), '.'),
+    (str(tk_dll_dir / 'tcl86t.dll'), '.'),
+    (str(tk_dll_dir / 'tk86t.dll'), '.'),
+]
+tk_datas = [
+    (str(tcl_root), 'tcl'),
+    (str(python_home / 'Lib' / 'tkinter'), 'tkinter'),
+]
+
 
 a = Analysis(
     ['main.py'],
     pathex=[],
-    binaries=[],
-    datas=[],
-    hiddenimports=[],
+    binaries=tk_binaries,
+    datas=tk_datas,
+    hiddenimports=['tkinter', 'tkinter.ttk', '_tkinter'],
     hookspath=[],
     hooksconfig={},
-    runtime_hooks=[],
+    runtime_hooks=['pyinstaller_tk_runtime.py'],
     excludes=[],
     noarchive=False,
     optimize=0,

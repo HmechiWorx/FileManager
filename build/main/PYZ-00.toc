@@ -1,949 +1,738 @@
-('D:\\Users\\Vkhem\\Desktop\\File Management Copy\\build\\main\\PYZ-00.pyz',
+('D:\\File Management\\build\\main\\PYZ-00.pyz',
  [('PIL',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\__init__.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\__init__.py',
    'PYMODULE'),
   ('PIL.AvifImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\AvifImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\AvifImagePlugin.py',
    'PYMODULE'),
   ('PIL.BlpImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\BlpImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\BlpImagePlugin.py',
    'PYMODULE'),
   ('PIL.BmpImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\BmpImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\BmpImagePlugin.py',
    'PYMODULE'),
   ('PIL.BufrStubImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
    'PYMODULE'),
   ('PIL.CurImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\CurImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\CurImagePlugin.py',
    'PYMODULE'),
   ('PIL.DcxImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\DcxImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\DcxImagePlugin.py',
    'PYMODULE'),
   ('PIL.DdsImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\DdsImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\DdsImagePlugin.py',
    'PYMODULE'),
   ('PIL.EpsImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\EpsImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\EpsImagePlugin.py',
    'PYMODULE'),
   ('PIL.ExifTags',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ExifTags.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ExifTags.py',
    'PYMODULE'),
   ('PIL.FitsImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\FitsImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\FitsImagePlugin.py',
    'PYMODULE'),
   ('PIL.FliImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\FliImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\FliImagePlugin.py',
    'PYMODULE'),
   ('PIL.FpxImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\FpxImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\FpxImagePlugin.py',
    'PYMODULE'),
   ('PIL.FtexImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\FtexImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\FtexImagePlugin.py',
    'PYMODULE'),
   ('PIL.GbrImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\GbrImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\GbrImagePlugin.py',
    'PYMODULE'),
   ('PIL.GifImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\GifImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\GifImagePlugin.py',
    'PYMODULE'),
   ('PIL.GimpGradientFile',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\GimpGradientFile.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\GimpGradientFile.py',
    'PYMODULE'),
   ('PIL.GimpPaletteFile',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\GimpPaletteFile.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\GimpPaletteFile.py',
    'PYMODULE'),
   ('PIL.GribStubImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\GribStubImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\GribStubImagePlugin.py',
    'PYMODULE'),
   ('PIL.Hdf5StubImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
    'PYMODULE'),
   ('PIL.IcnsImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\IcnsImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\IcnsImagePlugin.py',
    'PYMODULE'),
   ('PIL.IcoImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\IcoImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\IcoImagePlugin.py',
    'PYMODULE'),
   ('PIL.ImImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\ImImagePlugin.py',
    'PYMODULE'),
   ('PIL.Image',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\Image.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\Image.py',
    'PYMODULE'),
   ('PIL.ImageChops',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageChops.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageChops.py',
    'PYMODULE'),
   ('PIL.ImageCms',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageCms.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageCms.py',
    'PYMODULE'),
   ('PIL.ImageColor',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageColor.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageColor.py',
    'PYMODULE'),
   ('PIL.ImageFile',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageFile.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageFile.py',
    'PYMODULE'),
   ('PIL.ImageFilter',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageFilter.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageFilter.py',
    'PYMODULE'),
   ('PIL.ImageMath',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageMath.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageMath.py',
    'PYMODULE'),
   ('PIL.ImageMode',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageMode.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageMode.py',
    'PYMODULE'),
   ('PIL.ImageOps',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageOps.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageOps.py',
    'PYMODULE'),
   ('PIL.ImagePalette',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImagePalette.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImagePalette.py',
    'PYMODULE'),
   ('PIL.ImageQt',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageQt.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageQt.py',
    'PYMODULE'),
   ('PIL.ImageSequence',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageSequence.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageSequence.py',
    'PYMODULE'),
   ('PIL.ImageShow',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageShow.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageShow.py',
    'PYMODULE'),
   ('PIL.ImageTk',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageTk.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageTk.py',
    'PYMODULE'),
   ('PIL.ImageWin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImageWin.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\ImageWin.py',
    'PYMODULE'),
   ('PIL.ImtImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\ImtImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\ImtImagePlugin.py',
    'PYMODULE'),
   ('PIL.IptcImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\IptcImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\IptcImagePlugin.py',
    'PYMODULE'),
   ('PIL.Jpeg2KImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
    'PYMODULE'),
   ('PIL.JpegImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\JpegImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\JpegImagePlugin.py',
    'PYMODULE'),
   ('PIL.JpegPresets',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\JpegPresets.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\JpegPresets.py',
    'PYMODULE'),
   ('PIL.McIdasImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\McIdasImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\McIdasImagePlugin.py',
    'PYMODULE'),
   ('PIL.MicImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\MicImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\MicImagePlugin.py',
    'PYMODULE'),
   ('PIL.MpegImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\MpegImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\MpegImagePlugin.py',
    'PYMODULE'),
   ('PIL.MpoImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\MpoImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\MpoImagePlugin.py',
    'PYMODULE'),
   ('PIL.MspImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\MspImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\MspImagePlugin.py',
    'PYMODULE'),
   ('PIL.PaletteFile',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PaletteFile.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\PaletteFile.py',
    'PYMODULE'),
   ('PIL.PalmImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PalmImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\PalmImagePlugin.py',
    'PYMODULE'),
   ('PIL.PcdImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PcdImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\PcdImagePlugin.py',
    'PYMODULE'),
   ('PIL.PcxImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PcxImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\PcxImagePlugin.py',
    'PYMODULE'),
   ('PIL.PdfImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PdfImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\PdfImagePlugin.py',
    'PYMODULE'),
   ('PIL.PdfParser',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PdfParser.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\PdfParser.py',
    'PYMODULE'),
   ('PIL.PixarImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PixarImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\PixarImagePlugin.py',
    'PYMODULE'),
   ('PIL.PngImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PngImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\PngImagePlugin.py',
    'PYMODULE'),
   ('PIL.PpmImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PpmImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\PpmImagePlugin.py',
    'PYMODULE'),
   ('PIL.PsdImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\PsdImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\PsdImagePlugin.py',
    'PYMODULE'),
   ('PIL.QoiImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\QoiImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\QoiImagePlugin.py',
    'PYMODULE'),
   ('PIL.SgiImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\SgiImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\SgiImagePlugin.py',
    'PYMODULE'),
   ('PIL.SpiderImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\SpiderImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\SpiderImagePlugin.py',
    'PYMODULE'),
   ('PIL.SunImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\SunImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\SunImagePlugin.py',
    'PYMODULE'),
   ('PIL.TgaImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\TgaImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\TgaImagePlugin.py',
    'PYMODULE'),
   ('PIL.TiffImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\TiffImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\TiffImagePlugin.py',
    'PYMODULE'),
   ('PIL.TiffTags',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\TiffTags.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\TiffTags.py',
    'PYMODULE'),
   ('PIL.WebPImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\WebPImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\WebPImagePlugin.py',
    'PYMODULE'),
   ('PIL.WmfImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\WmfImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\WmfImagePlugin.py',
    'PYMODULE'),
   ('PIL.XVThumbImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
    'PYMODULE'),
   ('PIL.XbmImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\XbmImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\XbmImagePlugin.py',
    'PYMODULE'),
   ('PIL.XpmImagePlugin',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\XpmImagePlugin.py',
+   'D:\\File '
+   'Management\\.venv-build\\Lib\\site-packages\\PIL\\XpmImagePlugin.py',
    'PYMODULE'),
   ('PIL._binary',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\_binary.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\_binary.py',
    'PYMODULE'),
   ('PIL._deprecate',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\_deprecate.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\_deprecate.py',
    'PYMODULE'),
   ('PIL._typing',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\_typing.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\_typing.py',
    'PYMODULE'),
   ('PIL._util',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\_util.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\_util.py',
    'PYMODULE'),
   ('PIL._version',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\_version.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\_version.py',
    'PYMODULE'),
   ('PIL.features',
-   'D:\\Users\\Vkhem\\Desktop\\File Management '
-   'Copy\\.venv\\Lib\\site-packages\\PIL\\features.py',
+   'D:\\File Management\\.venv-build\\Lib\\site-packages\\PIL\\features.py',
    'PYMODULE'),
   ('__future__',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\__future__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\__future__.py',
    'PYMODULE'),
   ('_aix_support',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_aix_support.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_aix_support.py',
    'PYMODULE'),
   ('_colorize',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_colorize.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_colorize.py',
    'PYMODULE'),
   ('_compat_pickle',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_compat_pickle.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_compat_pickle.py',
    'PYMODULE'),
   ('_compression',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_compression.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_compression.py',
    'PYMODULE'),
   ('_opcode_metadata',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_opcode_metadata.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_opcode_metadata.py',
    'PYMODULE'),
   ('_py_abc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_py_abc.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_py_abc.py',
    'PYMODULE'),
   ('_pydatetime',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_pydatetime.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_pydatetime.py',
    'PYMODULE'),
   ('_pydecimal',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_pydecimal.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_pydecimal.py',
    'PYMODULE'),
   ('_strptime',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_strptime.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_strptime.py',
    'PYMODULE'),
   ('_threading_local',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\_threading_local.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\_threading_local.py',
    'PYMODULE'),
   ('argparse',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\argparse.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\argparse.py',
    'PYMODULE'),
   ('ast',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\ast.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\ast.py',
    'PYMODULE'),
   ('base64',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\base64.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\base64.py',
    'PYMODULE'),
   ('bisect',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\bisect.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\bisect.py',
    'PYMODULE'),
   ('bz2',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\bz2.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\bz2.py',
    'PYMODULE'),
   ('calendar',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\calendar.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\calendar.py',
    'PYMODULE'),
   ('code',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\code.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\code.py',
    'PYMODULE'),
   ('codeop',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\codeop.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\codeop.py',
    'PYMODULE'),
   ('colorsys',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\colorsys.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\colorsys.py',
    'PYMODULE'),
   ('contextlib',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\contextlib.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\contextlib.py',
    'PYMODULE'),
   ('contextvars',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\contextvars.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\contextvars.py',
    'PYMODULE'),
   ('copy',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\copy.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\copy.py',
    'PYMODULE'),
   ('csv',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\csv.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\csv.py',
    'PYMODULE'),
   ('ctypes',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\ctypes\\__init__.py',
    'PYMODULE'),
   ('ctypes._endian',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\_endian.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\ctypes\\_endian.py',
    'PYMODULE'),
   ('dataclasses',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\dataclasses.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\dataclasses.py',
    'PYMODULE'),
   ('datetime',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\datetime.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\datetime.py',
    'PYMODULE'),
   ('decimal',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\decimal.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\decimal.py',
    'PYMODULE'),
   ('difflib',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\difflib.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\difflib.py',
    'PYMODULE'),
   ('dis',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\dis.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\dis.py',
    'PYMODULE'),
   ('email',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\__init__.py',
    'PYMODULE'),
   ('email._encoded_words',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\_encoded_words.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\_encoded_words.py',
    'PYMODULE'),
   ('email._header_value_parser',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\_header_value_parser.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\_header_value_parser.py',
    'PYMODULE'),
   ('email._parseaddr',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\_parseaddr.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\_parseaddr.py',
    'PYMODULE'),
   ('email._policybase',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\_policybase.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\_policybase.py',
    'PYMODULE'),
   ('email.base64mime',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\base64mime.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\base64mime.py',
    'PYMODULE'),
   ('email.charset',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\charset.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\charset.py',
    'PYMODULE'),
   ('email.contentmanager',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\contentmanager.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\contentmanager.py',
    'PYMODULE'),
   ('email.encoders',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\encoders.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\encoders.py',
    'PYMODULE'),
   ('email.errors',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\errors.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\errors.py',
    'PYMODULE'),
   ('email.feedparser',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\feedparser.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\feedparser.py',
    'PYMODULE'),
   ('email.generator',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\generator.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\generator.py',
    'PYMODULE'),
   ('email.header',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\header.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\header.py',
    'PYMODULE'),
   ('email.headerregistry',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\headerregistry.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\headerregistry.py',
    'PYMODULE'),
   ('email.iterators',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\iterators.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\iterators.py',
    'PYMODULE'),
   ('email.message',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\message.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\message.py',
    'PYMODULE'),
   ('email.parser',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\parser.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\parser.py',
    'PYMODULE'),
   ('email.policy',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\policy.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\policy.py',
    'PYMODULE'),
   ('email.quoprimime',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\quoprimime.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\quoprimime.py',
    'PYMODULE'),
   ('email.utils',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\email\\utils.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\email\\utils.py',
    'PYMODULE'),
   ('fnmatch',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\fnmatch.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\fnmatch.py',
    'PYMODULE'),
   ('fractions',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\fractions.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\fractions.py',
    'PYMODULE'),
   ('ftplib',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\ftplib.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\ftplib.py',
    'PYMODULE'),
   ('getopt',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\getopt.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\getopt.py',
    'PYMODULE'),
   ('getpass',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\getpass.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\getpass.py',
    'PYMODULE'),
   ('gettext',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\gettext.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\gettext.py',
    'PYMODULE'),
   ('glob',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\glob.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\glob.py',
    'PYMODULE'),
   ('gzip',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\gzip.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\gzip.py',
    'PYMODULE'),
   ('hashlib',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\hashlib.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\hashlib.py',
    'PYMODULE'),
   ('http',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\http\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\http\\__init__.py',
    'PYMODULE'),
   ('http.client',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\http\\client.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\http\\client.py',
    'PYMODULE'),
   ('http.cookiejar',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\http\\cookiejar.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\http\\cookiejar.py',
    'PYMODULE'),
   ('importlib',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\__init__.py',
    'PYMODULE'),
   ('importlib._abc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_abc.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\_abc.py',
    'PYMODULE'),
   ('importlib._bootstrap',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_bootstrap.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\_bootstrap.py',
    'PYMODULE'),
   ('importlib._bootstrap_external',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_bootstrap_external.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\_bootstrap_external.py',
    'PYMODULE'),
   ('importlib.abc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\abc.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\abc.py',
    'PYMODULE'),
   ('importlib.machinery',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\machinery.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\machinery.py',
    'PYMODULE'),
   ('importlib.metadata',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\metadata\\__init__.py',
    'PYMODULE'),
   ('importlib.metadata._adapters',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_adapters.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\metadata\\_adapters.py',
    'PYMODULE'),
   ('importlib.metadata._collections',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_collections.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\metadata\\_collections.py',
    'PYMODULE'),
   ('importlib.metadata._functools',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_functools.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\metadata\\_functools.py',
    'PYMODULE'),
   ('importlib.metadata._itertools',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_itertools.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\metadata\\_itertools.py',
    'PYMODULE'),
   ('importlib.metadata._meta',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_meta.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\metadata\\_meta.py',
    'PYMODULE'),
   ('importlib.metadata._text',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_text.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\metadata\\_text.py',
    'PYMODULE'),
   ('importlib.readers',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\readers.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\readers.py',
    'PYMODULE'),
   ('importlib.resources',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\resources\\__init__.py',
    'PYMODULE'),
   ('importlib.resources._adapters',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_adapters.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\resources\\_adapters.py',
    'PYMODULE'),
   ('importlib.resources._common',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_common.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\resources\\_common.py',
    'PYMODULE'),
   ('importlib.resources._functional',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_functional.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\resources\\_functional.py',
    'PYMODULE'),
   ('importlib.resources._itertools',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_itertools.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\resources\\_itertools.py',
    'PYMODULE'),
   ('importlib.resources.abc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\abc.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\resources\\abc.py',
    'PYMODULE'),
   ('importlib.resources.readers',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\readers.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\resources\\readers.py',
    'PYMODULE'),
   ('importlib.util',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\util.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\importlib\\util.py',
    'PYMODULE'),
   ('inspect',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\inspect.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\inspect.py',
    'PYMODULE'),
   ('ipaddress',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\ipaddress.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\ipaddress.py',
    'PYMODULE'),
   ('json',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\json\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\json\\__init__.py',
    'PYMODULE'),
   ('json.decoder',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\json\\decoder.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\json\\decoder.py',
    'PYMODULE'),
   ('json.encoder',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\json\\encoder.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\json\\encoder.py',
    'PYMODULE'),
   ('json.scanner',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\json\\scanner.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\json\\scanner.py',
    'PYMODULE'),
   ('logging',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\logging\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\logging\\__init__.py',
    'PYMODULE'),
   ('lzma',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\lzma.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\lzma.py',
    'PYMODULE'),
   ('mimetypes',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\mimetypes.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\mimetypes.py',
    'PYMODULE'),
   ('netrc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\netrc.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\netrc.py',
    'PYMODULE'),
   ('nturl2path',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\nturl2path.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\nturl2path.py',
    'PYMODULE'),
   ('numbers',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\numbers.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\numbers.py',
    'PYMODULE'),
   ('opcode',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\opcode.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\opcode.py',
    'PYMODULE'),
   ('pathlib',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\pathlib\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\pathlib\\__init__.py',
    'PYMODULE'),
   ('pathlib._abc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\pathlib\\_abc.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\pathlib\\_abc.py',
    'PYMODULE'),
   ('pathlib._local',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\pathlib\\_local.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\pathlib\\_local.py',
    'PYMODULE'),
   ('pickle',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\pickle.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\pickle.py',
    'PYMODULE'),
   ('platform',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\platform.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\platform.py',
    'PYMODULE'),
   ('pprint',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\pprint.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\pprint.py',
    'PYMODULE'),
   ('py_compile',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\py_compile.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\py_compile.py',
    'PYMODULE'),
   ('quopri',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\quopri.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\quopri.py',
    'PYMODULE'),
   ('random',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\random.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\random.py',
    'PYMODULE'),
   ('selectors',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\selectors.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\selectors.py',
    'PYMODULE'),
   ('shlex',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\shlex.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\shlex.py',
    'PYMODULE'),
   ('shutil',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\shutil.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\shutil.py',
    'PYMODULE'),
   ('signal',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\signal.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\signal.py',
    'PYMODULE'),
   ('socket',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\socket.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\socket.py',
    'PYMODULE'),
   ('sqlite3',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\sqlite3\\__init__.py',
    'PYMODULE'),
   ('sqlite3.__main__',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\__main__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\sqlite3\\__main__.py',
    'PYMODULE'),
   ('sqlite3.dbapi2',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\dbapi2.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\sqlite3\\dbapi2.py',
    'PYMODULE'),
   ('sqlite3.dump',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\dump.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\sqlite3\\dump.py',
    'PYMODULE'),
   ('ssl',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\ssl.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\ssl.py',
    'PYMODULE'),
   ('statistics',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\statistics.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\statistics.py',
    'PYMODULE'),
   ('string',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\string.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\string.py',
    'PYMODULE'),
   ('stringprep',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\stringprep.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\stringprep.py',
    'PYMODULE'),
   ('subprocess',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\subprocess.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\subprocess.py',
    'PYMODULE'),
   ('sysconfig',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\sysconfig\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\sysconfig\\__init__.py',
    'PYMODULE'),
   ('tarfile',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tarfile.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\tarfile.py',
    'PYMODULE'),
   ('tempfile',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tempfile.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\tempfile.py',
    'PYMODULE'),
   ('textwrap',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\textwrap.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\textwrap.py',
    'PYMODULE'),
   ('threading',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\threading.py',
-   'PYMODULE'),
-  ('tkinter',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tkinter\\__init__.py',
-   'PYMODULE'),
-  ('tkinter.commondialog',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tkinter\\commondialog.py',
-   'PYMODULE'),
-  ('tkinter.constants',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tkinter\\constants.py',
-   'PYMODULE'),
-  ('tkinter.dialog',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tkinter\\dialog.py',
-   'PYMODULE'),
-  ('tkinter.filedialog',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tkinter\\filedialog.py',
-   'PYMODULE'),
-  ('tkinter.messagebox',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tkinter\\messagebox.py',
-   'PYMODULE'),
-  ('tkinter.simpledialog',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tkinter\\simpledialog.py',
-   'PYMODULE'),
-  ('tkinter.ttk',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tkinter\\ttk.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\threading.py',
    'PYMODULE'),
   ('token',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\token.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\token.py',
    'PYMODULE'),
   ('tokenize',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tokenize.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\tokenize.py',
    'PYMODULE'),
   ('tracemalloc',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\tracemalloc.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\tracemalloc.py',
    'PYMODULE'),
   ('typing',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\typing.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\typing.py',
    'PYMODULE'),
   ('urllib',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\urllib\\__init__.py',
    'PYMODULE'),
   ('urllib.error',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\error.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\urllib\\error.py',
    'PYMODULE'),
   ('urllib.parse',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\parse.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\urllib\\parse.py',
    'PYMODULE'),
   ('urllib.request',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\request.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\urllib\\request.py',
    'PYMODULE'),
   ('urllib.response',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\response.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\urllib\\response.py',
    'PYMODULE'),
   ('uuid',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\uuid.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\uuid.py',
    'PYMODULE'),
   ('xml',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\__init__.py',
    'PYMODULE'),
   ('xml.etree',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\etree\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\etree\\__init__.py',
    'PYMODULE'),
   ('xml.etree.ElementInclude',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\etree\\ElementInclude.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\etree\\ElementInclude.py',
    'PYMODULE'),
   ('xml.etree.ElementPath',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\etree\\ElementPath.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\etree\\ElementPath.py',
    'PYMODULE'),
   ('xml.etree.ElementTree',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\etree\\ElementTree.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\etree\\ElementTree.py',
    'PYMODULE'),
   ('xml.etree.cElementTree',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\etree\\cElementTree.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\etree\\cElementTree.py',
    'PYMODULE'),
   ('xml.parsers',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\parsers\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\parsers\\__init__.py',
    'PYMODULE'),
   ('xml.parsers.expat',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\parsers\\expat.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\parsers\\expat.py',
    'PYMODULE'),
   ('xml.sax',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\sax\\__init__.py',
    'PYMODULE'),
   ('xml.sax._exceptions',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\_exceptions.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\sax\\_exceptions.py',
    'PYMODULE'),
   ('xml.sax.expatreader',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\expatreader.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\sax\\expatreader.py',
    'PYMODULE'),
   ('xml.sax.handler',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\handler.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\sax\\handler.py',
    'PYMODULE'),
   ('xml.sax.saxutils',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\saxutils.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\sax\\saxutils.py',
    'PYMODULE'),
   ('xml.sax.xmlreader',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\xmlreader.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\xml\\sax\\xmlreader.py',
    'PYMODULE'),
   ('zipfile',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\zipfile\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\zipfile\\__init__.py',
    'PYMODULE'),
   ('zipfile._path',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\zipfile\\_path\\__init__.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\zipfile\\_path\\__init__.py',
    'PYMODULE'),
   ('zipfile._path.glob',
-   'C:\\Program '
-   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3568.0_x64__qbz5n2kfra8p0\\Lib\\zipfile\\_path\\glob.py',
+   'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\Lib\\zipfile\\_path\\glob.py',
    'PYMODULE')])
