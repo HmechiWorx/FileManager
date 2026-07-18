@@ -1,9 +1,9 @@
 ('D:\\File Management\\dist\\main.exe',
- True,
+ False,
  False,
  False,
  'D:\\File '
- 'Management\\.venv-build\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-console.ico',
+ 'Management\\.venv-build\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-windowed.ico',
  None,
  False,
  False,
@@ -3211,9 +3211,9 @@
  [],
  False,
  False,
- 1784351551,
- [('run.exe',
+ 1784351828,
+ [('runw.exe',
    'D:\\File '
-   'Management\\.venv-build\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
+   'Management\\.venv-build\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
    'EXECUTABLE')],
  'C:\\Users\\Vkhem\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\python313.dll')
