@@ -12,8 +12,9 @@ tk_binaries = [
     (str(tk_dll_dir / 'tk86t.dll'), '.'),
 ]
 tk_datas = [
-    (str(tcl_root), 'tcl'),
     (str(python_home / 'Lib' / 'tkinter'), 'tkinter'),
+    (str(tcl_root / 'tcl8.6'), '_tcl_data'),
+    (str(tcl_root / 'tk8.6'), '_tk_data'),
 ]
 
 

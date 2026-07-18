@@ -61,7 +61,7 @@ class FileManagerApp:
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
 
         # --- LICENSE KEY CHECK ---
-        self.license_file = Path("license.key")
+        self.license_file = APP_DIR / "license.key"
         self.license_key = None
         if self.license_file.exists():
             with open(self.license_file, "r") as f:
