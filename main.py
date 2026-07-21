@@ -258,13 +258,19 @@ class FileManagerApp:
         self.cnc_editor_button = ttk.Button(header, text="Open CNC Editor", command=self.open_cnc_editor_folder, style='Accent.TButton')
         self.cnc_editor_button.pack(side=tk.RIGHT, padx=(0, 20), pady=14)
 
-        self.main_pane = ttk.PanedWindow(self.root, orient=tk.HORIZONTAL)
-        self.main_pane.pack(fill=tk.BOTH, expand=True)
+        self.main_frame = ttk.Frame(self.root, style='TFrame')
+        self.main_frame.pack(fill=tk.BOTH, expand=True)
+        self.main_frame.columnconfigure(0, weight=1, uniform="main_sections")
+        self.main_frame.columnconfigure(1, weight=0)
+        self.main_frame.columnconfigure(2, weight=1, uniform="main_sections")
+        self.main_frame.rowconfigure(0, weight=1)
 
-        self.left_frame = ttk.Frame(self.main_pane, width=560, padding=10, style='TFrame')
-        self.right_frame = ttk.Frame(self.main_pane, width=780, padding=10, style='TFrame')
-        self.main_pane.add(self.left_frame, weight=4)
-        self.main_pane.add(self.right_frame, weight=4)
+        self.left_frame = ttk.Frame(self.main_frame, padding=(10, 10, 4, 10), style='TFrame')
+        self.center_separator = ttk.Separator(self.main_frame, orient=tk.VERTICAL)
+        self.right_frame = ttk.Frame(self.main_frame, padding=(4, 10, 10, 10), style='TFrame')
+        self.left_frame.grid(row=0, column=0, sticky=tk.NSEW)
+        self.center_separator.grid(row=0, column=1, sticky=tk.NS)
+        self.right_frame.grid(row=0, column=2, sticky=tk.NSEW)
 
         action_frame = ttk.Frame(self.left_frame, padding=(0, 8, 0, 0), style='TFrame')
         action_frame.pack(fill=tk.X, pady=(0, 8))
@@ -446,24 +452,6 @@ class FileManagerApp:
         self.log_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         log_scroll.pack(fill=tk.Y, side=tk.LEFT)
         self.refresh_logs()
-        # Apply layout after widgets are realized; retry because maximized windows
-        # can report unstable sizes during the first geometry pass.
-        self.root.after_idle(self._set_initial_pane_layout)
-        for delay in (100, 250, 500, 1000):
-            self.root.after(delay, self._set_initial_pane_layout)
-
-    def _set_initial_pane_layout(self):
-        # Keep a stable 2-pane layout; the middle section opens inside the right pane.
-        try:
-            self.root.update_idletasks()
-            total_width = max(self.main_pane.winfo_width(), self.root.winfo_width(), 1200)
-            left_width = total_width // 2
-            current_left_width = self.main_pane.sashpos(0)
-            if current_left_width != left_width:
-                self.main_pane.sashpos(0, left_width)
-        except Exception:
-            pass
-
     def show_middle_panel(self):
         if not self.selected_file or not self.selected_file.is_file():
             messagebox.showwarning("Select file", "Select a source file first.")
