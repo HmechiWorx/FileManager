@@ -468,9 +468,17 @@ class FileManagerApp:
         if not self.selected_file or not self.selected_file.is_file():
             messagebox.showwarning("Select file", "Select a source file first.")
             return
-        self.middle_copy_pending = True
+
+        dest_folder = self._get_default_middle_destination()
+        if dest_folder is None:
+            messagebox.showwarning("Select destination", "Open a machine folder first.")
+            return
+
+        self.middle_copy_pending = False
         self.right_normal_frame.pack_forget()
         self.middle_frame.pack(fill=tk.BOTH, expand=True)
+        self._select_tree_path(self.view_tree, dest_folder)
+        self.send_file_to_middle_folder(dest_folder)
 
     def open_view_only_panel(self):
         self.middle_copy_pending = False
@@ -572,6 +580,63 @@ class FileManagerApp:
     def keep_tree_xview_locked(self, tree):
         tree.xview_moveto(0)
         return "break"
+
+    def _first_existing_folder(self, folders):
+        for folder in folders:
+            if folder.exists() and folder.is_dir():
+                return folder
+        return None
+
+    def _find_containing_root(self, path: Path, folders):
+        for folder in folders:
+            try:
+                if path == folder or folder in path.parents:
+                    return folder
+            except Exception:
+                continue
+        return None
+
+    def _get_selected_tree_path(self, tree):
+        selected = tree.selection()
+        if not selected:
+            return None
+
+        values = tree.item(selected[0], "values")
+        if len(values) < 2:
+            return None
+        return Path(values[1])
+
+    def _get_default_middle_destination(self):
+        return self._first_existing_folder(self.middle_root_folders)
+
+    def _get_default_left_destination(self):
+        selected_path = self._get_selected_tree_path(self.tree)
+        if selected_path is not None:
+            root_folder = self._find_containing_root(selected_path, self.root_folders)
+            if root_folder is not None and root_folder.exists() and root_folder.is_dir():
+                return root_folder
+        return self._first_existing_folder(self.root_folders)
+
+    def _select_tree_path(self, tree, target_path: Path):
+        target = str(target_path)
+
+        def search(parent=""):
+            for item in tree.get_children(parent):
+                values = tree.item(item, "values")
+                if len(values) >= 2 and values[1] == target:
+                    return item
+                found = search(item)
+                if found:
+                    tree.item(item, open=True)
+                    return found
+            return None
+
+        item = search()
+        if item:
+            tree.selection_set(item)
+            tree.focus(item)
+            tree.see(item)
+        return item
 
     def delete_selected_tree_item(self, tree):
         selected = tree.selection()
@@ -1222,23 +1287,24 @@ class FileManagerApp:
         except Exception as e:
             messagebox.showerror("Copy failed", f"Unable to copy file: {e}")
 
-    def send_file_to_middle_folder(self):
+    def send_file_to_middle_folder(self, dest_folder=None):
         if not self.selected_file or not self.selected_file.is_file():
             messagebox.showwarning("Select file", "Select a source file first.")
             return
 
-        selected = self.view_tree.selection()
-        if not selected:
-            messagebox.showwarning("Select destination", "Select a destination in the middle section first.")
-            return
+        if dest_folder is None:
+            selected = self.view_tree.selection()
+            if not selected:
+                messagebox.showwarning("Select destination", "Select a destination in the middle section first.")
+                return
 
-        values = self.view_tree.item(selected[0], "values")
-        if len(values) < 2:
-            messagebox.showwarning("Select destination", "Invalid destination selected in middle section.")
-            return
+            values = self.view_tree.item(selected[0], "values")
+            if len(values) < 2:
+                messagebox.showwarning("Select destination", "Invalid destination selected in middle section.")
+                return
 
-        selected_path = Path(values[1])
-        dest_folder = selected_path if selected_path.is_dir() else selected_path.parent
+            selected_path = Path(values[1])
+            dest_folder = selected_path if selected_path.is_dir() else selected_path.parent
         if not dest_folder.exists() or not dest_folder.is_dir():
             messagebox.showerror("Destination error", "Selected destination folder does not exist.")
             return
@@ -1258,6 +1324,7 @@ class FileManagerApp:
             messagebox.showinfo("Sent", f"File copied to {dest_path}")
             self.refresh_logs()
             self.populate_middle_tree()
+            self._select_tree_path(self.view_tree, dest_folder)
         except Exception as e:
             messagebox.showerror("Copy failed", f"Unable to copy file: {e}")
 
@@ -1277,19 +1344,13 @@ class FileManagerApp:
             messagebox.showwarning("Select file", "Select a file in View Only, not a folder.")
             return
 
-        selected_dest = self.tree.selection()
-        if not selected_dest:
-            messagebox.showwarning("Select destination", "Select a destination folder in the first section.")
+        dest_folder = self._get_default_left_destination()
+        if dest_folder is None:
+            messagebox.showwarning("Select destination", "Open a main folder in the first section.")
             return
 
-        dest_values = self.tree.item(selected_dest[0], "values")
-        if len(dest_values) < 2:
-            messagebox.showwarning("Select destination", "Invalid destination selected in first section.")
-            return
-
-        dest_folder = Path(dest_values[1])
         if not dest_folder.exists() or not dest_folder.is_dir():
-            messagebox.showwarning("Select destination", "Select a folder in the first section.")
+            messagebox.showwarning("Select destination", "The first section main folder does not exist.")
             return
 
         dest_path = dest_folder / source_file.name
@@ -1307,6 +1368,7 @@ class FileManagerApp:
             self.refresh_logs()
             self.populate_tree()
             self.populate_middle_tree()
+            self._select_tree_path(self.tree, dest_folder)
         except Exception as e:
             messagebox.showerror("Copy failed", f"Unable to copy file: {e}")
 
