@@ -47,6 +47,7 @@ class FileManagerApp:
             if MIDDLE_ROOT_FOLDERS_FILE.exists():
                 with open(MIDDLE_ROOT_FOLDERS_FILE, "r", encoding="utf-8") as f:
                     self.middle_root_folders = [Path(line.strip()) for line in f if line.strip()]
+                self.middle_root_folders = self.middle_root_folders[:1]
         except Exception:
             self.middle_root_folders = []
     def open_cnc_editor_folder(self):
@@ -278,19 +279,19 @@ class FileManagerApp:
         buttons_frame.grid(row=2, column=0, columnspan=3, sticky=tk.EW)
         buttons_frame.columnconfigure(0, weight=1)
         buttons_frame.columnconfigure(1, weight=1)
-        buttons_frame.columnconfigure(2, weight=2)
+        buttons_frame.columnconfigure(2, weight=1)
         buttons_frame.columnconfigure(3, weight=1)
-        buttons_frame.columnconfigure(4, weight=2)
+        buttons_frame.columnconfigure(4, weight=0)
         self.lock_button = ttk.Button(buttons_frame, text="Lock File", command=self.lock_file, style='TButton')
         self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
         self.unlock_button = ttk.Button(buttons_frame, text="Unlock File", command=self.unlock_file, style='TButton')
         self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
+        # Send to Target Folder is kept in code but hidden from the toolbar.
         self.send_button = ttk.Button(buttons_frame, text="Send to Target Folder", command=self.send_file_to_target, style='Accent.TButton')
-        self.send_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
         self.send_arrow_button = ttk.Button(buttons_frame, text=">>", command=self.show_middle_panel, style='Accent.TButton', width=4)
-        self.send_arrow_button.grid(row=0, column=3, padx=(0, 5), sticky=tk.EW)
-        self.open_view_only_button = ttk.Button(buttons_frame, text="Open Machine Folder", command=self.open_view_only_panel, style='TButton')
-        self.open_view_only_button.grid(row=0, column=4, sticky=tk.EW)
+        self.send_arrow_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
+        self.open_view_only_button = ttk.Button(buttons_frame, text="Open Machine View", command=self.open_view_only_panel, style='TButton')
+        self.open_view_only_button.grid(row=0, column=3, sticky=tk.EW)
         self.update_button_visibility()
 
         folder_select_frame = ttk.Frame(self.left_frame, style='TFrame')
@@ -301,26 +302,31 @@ class FileManagerApp:
         ttk.Button(folder_select_frame, text="Add Folder", command=self.add_folder, style='TButton').pack(side=tk.LEFT)
         ttk.Button(folder_select_frame, text="Clear Folders", command=self.clear_folders, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
         ttk.Button(folder_select_frame, text="Remove Folder", command=self.remove_selected_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        ttk.Button(folder_select_frame, text="Delete File/Folder", command=lambda: self.delete_selected_tree_item(self.tree), style='TButton').pack(side=tk.LEFT, padx=(5, 0))
 
         ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
 
         tree_frame = ttk.Frame(self.left_frame, style='TFrame')
         tree_frame.pack(fill=tk.BOTH, expand=True)
 
-        self.tree = ttk.Treeview(tree_frame, columns=("Status", "Comments"), show="tree headings", style='Treeview')
+        self.tree = ttk.Treeview(
+            tree_frame,
+            columns=("Status", "Location"),
+            show="tree headings",
+            style='Treeview',
+        )
         self.tree.heading("#0", text="File")
         self.tree.heading("Status", text="Status")
-        self.tree.heading("Comments", text="Location")
-        self.tree.column("#0", width=250)
-        self.tree.column("Status", width=80)
-        self.tree.column("Comments", width=400, stretch=True)
+        self.tree.heading("Location", text="Location")
+        self.tree.column("#0", width=220, stretch=True)
+        self.tree.column("Status", width=80, stretch=False)
+        self.tree.column("Location", width=350, stretch=True)
         tree_scroll = ttk.Scrollbar(tree_frame, orient=tk.VERTICAL, command=self.tree.yview)
-        tree_scroll_x = ttk.Scrollbar(tree_frame, orient=tk.HORIZONTAL, command=self.tree.xview)
-        self.tree.configure(yscrollcommand=tree_scroll.set, xscrollcommand=tree_scroll_x.set)
+        self.tree.configure(yscrollcommand=tree_scroll.set)
         self.tree.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         tree_scroll.pack(fill=tk.Y, side=tk.LEFT)
-        tree_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
         self.tree.bind("<<TreeviewSelect>>", self.on_tree_select)
+        self.tree.bind("<Shift-MouseWheel>", lambda event: self.keep_tree_xview_locked(self.tree))
 
         self.right_normal_frame = ttk.Frame(self.right_frame, style='TFrame')
         self.right_normal_frame.pack(fill=tk.BOTH, expand=True)
@@ -335,25 +341,33 @@ class FileManagerApp:
         ttk.Separator(self.middle_frame, orient='horizontal').pack(fill='x', pady=(0, 5))
         middle_controls_frame = ttk.Frame(self.middle_frame, style='TFrame')
         middle_controls_frame.pack(fill=tk.X, pady=(0, 6))
-        ttk.Button(middle_controls_frame, text="Add Folder", command=self.add_middle_folder, style='TButton').pack(side=tk.LEFT)
-        ttk.Button(middle_controls_frame, text="Clear Folders", command=self.clear_middle_folders, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        self.add_middle_folder_button = ttk.Button(middle_controls_frame, text="Add Folder", command=self.add_middle_folder, style='TButton')
+        self.add_middle_folder_button.pack(side=tk.LEFT)
+        ttk.Button(middle_controls_frame, text="Remove Folder", command=self.remove_selected_middle_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        ttk.Button(middle_controls_frame, text="Delete File/Folder", command=lambda: self.delete_selected_tree_item(self.view_tree), style='TButton').pack(side=tk.LEFT, padx=(5, 0))
         ttk.Button(middle_controls_frame, text="<<", command=self.send_file_to_left_folder, style='Accent.TButton', width=4).pack(side=tk.LEFT, padx=(5, 0))
 
         middle_tree_frame = ttk.Frame(self.middle_frame, style='TFrame')
         middle_tree_frame.pack(fill=tk.BOTH, expand=True)
 
-        self.view_tree = ttk.Treeview(middle_tree_frame, columns=("Status", "Comments"), show="tree headings", style='Treeview')
+        self.view_tree = ttk.Treeview(
+            middle_tree_frame,
+            columns=("Status", "Location"),
+            show="tree headings",
+            style='Treeview',
+        )
         self.view_tree.heading("#0", text="File")
         self.view_tree.heading("Status", text="Status")
-        self.view_tree.heading("Comments", text="Location")
+        self.view_tree.heading("Location", text="Location")
         self.view_tree.column("#0", width=170, stretch=True)
         self.view_tree.column("Status", width=80, stretch=False)
-        self.view_tree.column("Comments", width=170, stretch=True)
+        self.view_tree.column("Location", width=210, stretch=True)
         view_tree_scroll = ttk.Scrollbar(middle_tree_frame, orient=tk.VERTICAL, command=self.view_tree.yview)
         self.view_tree.configure(yscrollcommand=view_tree_scroll.set)
         self.view_tree.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         view_tree_scroll.pack(fill=tk.Y, side=tk.LEFT)
         self.view_tree.bind("<<TreeviewSelect>>", self.on_view_tree_select)
+        self.view_tree.bind("<Shift-MouseWheel>", lambda event: self.keep_tree_xview_locked(self.view_tree))
 
         ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(5, 10))
 
@@ -494,6 +508,11 @@ class FileManagerApp:
         self.clear_file_info()
 
     def add_middle_folder(self):
+        if self.middle_root_folders:
+            messagebox.showinfo("Folder already added", "Only one machine folder can be opened at a time.")
+            self.update_middle_add_folder_button()
+            return
+
         folder = filedialog.askdirectory(title="Select a folder to add to middle section")
         if not folder:
             return
@@ -504,12 +523,14 @@ class FileManagerApp:
         self.middle_root_folders.append(folder_path)
         self.save_root_folders()
         self.populate_middle_tree()
+        self.update_middle_add_folder_button()
 
     def clear_middle_folders(self):
         self.middle_root_folders.clear()
         self.save_root_folders()
         if hasattr(self, "view_tree"):
             self.view_tree.delete(*self.view_tree.get_children())
+        self.update_middle_add_folder_button()
 
     def remove_selected_root_folder(self):
         """Remove only the selected root folder from the opened folders list."""
@@ -530,6 +551,118 @@ class FileManagerApp:
             self.populate_tree()
         else:
             messagebox.showwarning("Remove Folder", "Selected item is not a root folder.")
+
+    def remove_selected_middle_root_folder(self):
+        """Remove the currently opened machine folder from the list."""
+        if not self.middle_root_folders:
+            messagebox.showwarning("Remove Folder", "No machine folder is opened.")
+            return
+
+        self.middle_root_folders.clear()
+        self.save_root_folders()
+        self.populate_middle_tree()
+        self.update_middle_add_folder_button()
+
+    def update_middle_add_folder_button(self):
+        if not hasattr(self, "add_middle_folder_button"):
+            return
+        state = tk.DISABLED if self.middle_root_folders else tk.NORMAL
+        self.add_middle_folder_button.config(state=state)
+
+    def keep_tree_xview_locked(self, tree):
+        tree.xview_moveto(0)
+        return "break"
+
+    def delete_selected_tree_item(self, tree):
+        selected = tree.selection()
+        if not selected:
+            messagebox.showwarning("Delete", "Select a file or folder first.")
+            return
+        self.delete_tree_item(tree, selected[0])
+
+    def delete_tree_item(self, tree, item):
+        values = tree.item(item, "values")
+        if len(values) < 2:
+            messagebox.showwarning("Delete", "Invalid item selected.")
+            return
+
+        path = Path(values[1])
+        if not path.exists():
+            messagebox.showinfo("Delete", "This file or folder no longer exists.")
+            self.refresh_trees_after_delete()
+            return
+
+        if path.is_file() and self.is_file_locked_for_path(path):
+            messagebox.showwarning("Delete blocked", "This file is locked and cannot be deleted.")
+            return
+
+        if path.is_dir():
+            locked_files = self.find_locked_files(path)
+            if locked_files:
+                messagebox.showwarning(
+                    "Delete blocked",
+                    f"This folder contains locked files and cannot be deleted.\n\nFirst locked file:\n{locked_files[0]}",
+                )
+                return
+
+        item_type = "folder" if path.is_dir() else "file"
+        if not messagebox.askyesno(
+            "Confirm Permanent Delete",
+            f"Permanently delete this {item_type} from File Explorer?\n\n{path}",
+        ):
+            return
+
+        try:
+            if path.is_dir():
+                shutil.rmtree(path)
+            else:
+                path.unlink()
+        except Exception as e:
+            messagebox.showerror("Delete failed", f"Unable to delete {path}:\n{e}")
+            return
+
+        self.remove_deleted_root_path(path)
+        self.log_action(path, "delete", f"Deleted {item_type}")
+        if self.selected_file and (self.selected_file == path or path in self.selected_file.parents):
+            self.selected_file = None
+            self.selected_file_mtime = None
+            self.clear_preview_area()
+            self.clear_edit_area()
+            self.clear_compare_area()
+            self.clear_file_info()
+        self.refresh_logs()
+        self.refresh_trees_after_delete()
+        messagebox.showinfo("Deleted", f"Deleted {item_type}:\n{path}")
+
+    def find_locked_files(self, folder: Path):
+        locked_files = []
+        for current_dir, _, filenames in os.walk(folder):
+            for filename in filenames:
+                file_path = Path(current_dir) / filename
+                if self.is_file_locked_for_path(file_path):
+                    locked_files.append(file_path)
+        return locked_files
+
+    def remove_deleted_root_path(self, deleted_path: Path):
+        self.root_folders = [folder for folder in self.root_folders if folder != deleted_path]
+        self.middle_root_folders = [folder for folder in self.middle_root_folders if folder != deleted_path]
+        self.save_root_folders()
+        self.update_folder_label()
+        self.update_middle_add_folder_button()
+
+    def refresh_trees_after_delete(self):
+        if self.search_var.get().strip() or any(
+            var.get().strip() for var in (
+                self.part_search_var,
+                self.draw_search_var,
+                self.desc_search_var,
+                self.cust_search_var,
+            )
+        ):
+            self._apply_live_filters()
+            self.populate_middle_tree()
+        else:
+            self.populate_tree()
 
     def _find_root_folder(self, path: Path):
         for folder in self.root_folders:
@@ -558,6 +691,7 @@ class FileManagerApp:
                 continue
             view_node = self.view_tree.insert("", "end", text=folder.name, open=True, values=("", str(folder)))
             self._populate_tree_view(view_node, folder)
+        self.update_middle_add_folder_button()
 
     def update_folder_label(self):
         if not self.root_folders:
@@ -608,7 +742,7 @@ class FileManagerApp:
         matched = query in path.name.lower()
         for child in sorted(path.iterdir(), key=lambda p: (p.is_file(), p.name.lower())):
             if child.is_dir():
-                child_node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child), ""))
+                child_node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child)))
                 child_matched = self._populate_tree_filtered(child_node, child, query)
                 if not child_matched:
                     self.tree.delete(child_node)
@@ -616,7 +750,7 @@ class FileManagerApp:
                     matched = True
             elif query in child.name.lower():
                 status = "Locked" if self.is_file_locked_for_path(child) else "Unlocked"
-                self.tree.insert(parent, "end", text=child.name, values=(status, str(child), ""))
+                self.tree.insert(parent, "end", text=child.name, values=(status, str(child)))
                 matched = True
         return matched
 
@@ -664,7 +798,7 @@ class FileManagerApp:
         try:
             for child in sorted(path.iterdir(), key=lambda p: (p.is_file(), p.name.lower())):
                 if child.is_dir():
-                    node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child), ""))
+                    node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child)))
                     child_match = self._populate_tree_from_file_matches(node, child, matched_files)
                     if not child_match:
                         self.tree.delete(node)
@@ -672,7 +806,7 @@ class FileManagerApp:
                         has_match = True
                 elif child in matched_files:
                     status = "Locked" if self.is_file_locked_for_path(child) else "Unlocked"
-                    self.tree.insert(parent, "end", text=child.name, values=(status, str(child), ""))
+                    self.tree.insert(parent, "end", text=child.name, values=(status, str(child)))
                     has_match = True
         except PermissionError:
             return has_match
@@ -803,6 +937,9 @@ class FileManagerApp:
         detail = [f"Path: {file_path}", f"Size: {size} bytes", f"Modified: {modified}", f"Type: {file_path.suffix or 'unknown'}"]
         self.file_info_label.config(text=" | ".join(detail))
 
+    def clear_file_info(self):
+        self.file_info_label.config(text="No file selected")
+
     def on_role_change(self):
         if self.current_role.get() == "supervisor":
             password = simpledialog.askstring("Supervisor Access", "Enter supervisor password:", show="*")
@@ -819,12 +956,11 @@ class FileManagerApp:
             self.lock_status_label.grid(row=1, column=0, columnspan=3, sticky=tk.W, pady=(4, 8))
             self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
             self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
-            self.send_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
-            self.send_arrow_button.grid(row=0, column=3, padx=(0, 5), sticky=tk.EW)
-            self.open_view_only_button.grid(row=0, column=4, sticky=tk.EW)
+            self.send_button.grid_remove()
+            self.send_arrow_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
+            self.open_view_only_button.grid(row=0, column=3, sticky=tk.EW)
             self.lock_button.config(state=tk.NORMAL)
             self.unlock_button.config(state=tk.NORMAL)
-            self.send_button.config(state=tk.NORMAL)
             self.send_arrow_button.config(state=tk.NORMAL)
             self.open_view_only_button.config(state=tk.NORMAL)
         else:
@@ -847,20 +983,11 @@ class FileManagerApp:
         try:
             for child in sorted(path.iterdir(), key=lambda p: (p.is_file(), p.name.lower())):
                 if child.is_dir():
-                    node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child), ""))
+                    node = self.tree.insert(parent, "end", text=child.name, open=False, values=("", str(child)))
                     self._populate_tree(node, child)
                 else:
                     status = "Locked" if self.is_file_locked_for_path(child) else "Unlocked"
-                    comment = ""
-                    if child.suffix.lower() == ".nc":
-                        self.db_cursor.execute(
-                            "SELECT comment FROM file_versions WHERE file_path = ? ORDER BY id DESC LIMIT 1",
-                            (str(child),)
-                        )
-                        row = self.db_cursor.fetchone()
-                        if row and row[0]:
-                            comment = row[0]
-                    self.tree.insert(parent, "end", text=child.name, values=(status, str(child), comment))
+                    self.tree.insert(parent, "end", text=child.name, values=(status, str(child)))
         except PermissionError:
             pass
 
@@ -868,20 +995,11 @@ class FileManagerApp:
         try:
             for child in sorted(path.iterdir(), key=lambda p: (p.is_file(), p.name.lower())):
                 if child.is_dir():
-                    node = self.view_tree.insert(parent, "end", text=child.name, open=False, values=("", str(child), ""))
+                    node = self.view_tree.insert(parent, "end", text=child.name, open=False, values=("", str(child)))
                     self._populate_tree_view(node, child)
                 else:
                     status = "Locked" if self.is_file_locked_for_path(child) else "Unlocked"
-                    comment = ""
-                    if child.suffix.lower() == ".nc":
-                        self.db_cursor.execute(
-                            "SELECT comment FROM file_versions WHERE file_path = ? ORDER BY id DESC LIMIT 1",
-                            (str(child),)
-                        )
-                        row = self.db_cursor.fetchone()
-                        if row and row[0]:
-                            comment = row[0]
-                    self.view_tree.insert(parent, "end", text=child.name, values=(status, str(child), comment))
+                    self.view_tree.insert(parent, "end", text=child.name, values=(status, str(child)))
         except PermissionError:
             pass
 
@@ -1140,7 +1258,6 @@ class FileManagerApp:
             messagebox.showinfo("Sent", f"File copied to {dest_path}")
             self.refresh_logs()
             self.populate_middle_tree()
-            self.close_middle_panel()
         except Exception as e:
             messagebox.showerror("Copy failed", f"Unable to copy file: {e}")
 

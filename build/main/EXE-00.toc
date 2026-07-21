@@ -1,4 +1,4 @@
-('D:\\File Management\\dist\\main.exe',
+('D:\\File Management\\dist_update\\main.exe',
  False,
  False,
  False,
@@ -3211,7 +3211,7 @@
  [],
  False,
  False,
- 1784351828,
+ 1784374565,
  [('runw.exe',
    'D:\\File '
    'Management\\.venv-build\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
