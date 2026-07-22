@@ -278,25 +278,22 @@ class FileManagerApp:
         ttk.Radiobutton(action_frame, text="Operator", variable=self.current_role, value="operator", command=self.on_role_change, style='TRadiobutton').grid(row=0, column=1, sticky=tk.W)
         ttk.Radiobutton(action_frame, text="Supervisor", variable=self.current_role, value="supervisor", command=self.on_role_change, style='TRadiobutton').grid(row=0, column=2, sticky=tk.W)
 
-        self.lock_status_label = ttk.Label(action_frame, text="File locked: ", style='TLabel')
-        self.lock_status_label.grid(row=1, column=0, columnspan=3, sticky=tk.W, pady=(4, 8))
-
-        buttons_frame = ttk.Frame(action_frame, style='TFrame')
-        buttons_frame.grid(row=2, column=0, columnspan=3, sticky=tk.EW)
-        buttons_frame.columnconfigure(0, weight=1)
-        buttons_frame.columnconfigure(1, weight=1)
-        buttons_frame.columnconfigure(2, weight=1)
-        buttons_frame.columnconfigure(3, weight=1)
-        buttons_frame.columnconfigure(4, weight=0)
-        self.lock_button = ttk.Button(buttons_frame, text="Lock File", command=self.lock_file, style='TButton')
+        self.buttons_frame = ttk.Frame(action_frame, style='TFrame')
+        self.buttons_frame.grid(row=1, column=0, columnspan=3, sticky=tk.EW, pady=(4, 0))
+        self.buttons_frame.columnconfigure(0, weight=1)
+        self.buttons_frame.columnconfigure(1, weight=1)
+        self.buttons_frame.columnconfigure(2, weight=1)
+        self.buttons_frame.columnconfigure(3, weight=1)
+        self.buttons_frame.columnconfigure(4, weight=0)
+        self.lock_button = ttk.Button(self.buttons_frame, text="Lock File", command=self.lock_file, style='TButton')
         self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
-        self.unlock_button = ttk.Button(buttons_frame, text="Unlock File", command=self.unlock_file, style='TButton')
+        self.unlock_button = ttk.Button(self.buttons_frame, text="Unlock File", command=self.unlock_file, style='TButton')
         self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
         # Send to Target Folder is kept in code but hidden from the toolbar.
-        self.send_button = ttk.Button(buttons_frame, text="Send to Target Folder", command=self.send_file_to_target, style='Accent.TButton')
-        self.send_arrow_button = ttk.Button(buttons_frame, text=">>", command=self.show_middle_panel, style='Accent.TButton', width=4)
+        self.send_button = ttk.Button(self.buttons_frame, text="Send to Target Folder", command=self.send_file_to_target, style='Accent.TButton')
+        self.send_arrow_button = ttk.Button(self.buttons_frame, text=">>", command=self.show_middle_panel, style='Accent.TButton', width=4)
         self.send_arrow_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
-        self.open_view_only_button = ttk.Button(buttons_frame, text="Open Machine View", command=self.open_view_only_panel, style='TButton')
+        self.open_view_only_button = ttk.Button(self.buttons_frame, text="Open Machine View", command=self.open_view_only_panel, style='TButton')
         self.open_view_only_button.grid(row=0, column=3, sticky=tk.EW)
         self.update_button_visibility()
 
@@ -306,8 +303,8 @@ class FileManagerApp:
         self.root_path_label = ttk.Label(folder_select_frame, text="<none>", style='TLabel')
         self.root_path_label.pack(side=tk.LEFT, padx=(5, 10))
         ttk.Button(folder_select_frame, text="Add Folder", command=self.add_folder, style='TButton').pack(side=tk.LEFT)
-        ttk.Button(folder_select_frame, text="Clear Folders", command=self.clear_folders, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
-        ttk.Button(folder_select_frame, text="Remove Folder", command=self.remove_selected_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        #ttk.Button(folder_select_frame, text="Clear Folders", command=self.clear_folders, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        ttk.Button(folder_select_frame, text="Clear Folder", command=self.remove_selected_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
         ttk.Button(folder_select_frame, text="Delete File/Folder", command=lambda: self.delete_selected_tree_item(self.tree), style='TButton').pack(side=tk.LEFT, padx=(5, 0))
 
         ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
@@ -349,7 +346,7 @@ class FileManagerApp:
         middle_controls_frame.pack(fill=tk.X, pady=(0, 6))
         self.add_middle_folder_button = ttk.Button(middle_controls_frame, text="Add Folder", command=self.add_middle_folder, style='TButton')
         self.add_middle_folder_button.pack(side=tk.LEFT)
-        ttk.Button(middle_controls_frame, text="Remove Folder", command=self.remove_selected_middle_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        ttk.Button(middle_controls_frame, text="Clear Folder", command=self.remove_selected_middle_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
         ttk.Button(middle_controls_frame, text="Delete File/Folder", command=lambda: self.delete_selected_tree_item(self.view_tree), style='TButton').pack(side=tk.LEFT, padx=(5, 0))
         ttk.Button(middle_controls_frame, text="<<", command=self.send_file_to_left_folder, style='Accent.TButton', width=4).pack(side=tk.LEFT, padx=(5, 0))
 
@@ -1002,11 +999,13 @@ class FileManagerApp:
                 return
             messagebox.showinfo("Access Granted", "Switched to Supervisor role.")
         # No password needed for operator
+        if self.current_role.get() == "operator" and self.middle_frame.winfo_manager() == "pack":
+            self.close_middle_panel()
         self.update_button_visibility()
 
     def update_button_visibility(self):
         if self.current_role.get() == "supervisor":
-            self.lock_status_label.grid(row=1, column=0, columnspan=3, sticky=tk.W, pady=(4, 8))
+            self.buttons_frame.grid(row=1, column=0, columnspan=3, sticky=tk.EW, pady=(4, 0))
             self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
             self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
             self.send_button.grid_remove()
@@ -1017,7 +1016,7 @@ class FileManagerApp:
             self.send_arrow_button.config(state=tk.NORMAL)
             self.open_view_only_button.config(state=tk.NORMAL)
         else:
-            self.lock_status_label.grid_remove()
+            self.buttons_frame.grid_remove()
             self.lock_button.grid_remove()
             self.unlock_button.grid_remove()
             self.send_button.grid_remove()
@@ -1307,6 +1306,23 @@ class FileManagerApp:
 
         try:
             shutil.copy2(self.selected_file, dest_path)
+
+            # Mirror lock status to destination so machine view shows the same state.
+            source_locked = self.is_file_locked_for_path(self.selected_file)
+            mirror_action = "lock" if source_locked else "unlock"
+            mirror_detail = f"Mirrored {mirror_action} status from source {self.selected_file}"
+            self.db_cursor.execute(
+                "INSERT INTO file_logs (file_path, timestamp, user_role, action, detail) VALUES (?, ?, ?, ?, ?)",
+                (str(dest_path), datetime.now().isoformat(), self.current_role.get(), mirror_action, mirror_detail),
+            )
+            self.db_conn.commit()
+
+            try:
+                os.chmod(dest_path, 0o444 if source_locked else 0o666)
+            except Exception:
+                # Status is still tracked in DB even if OS permission update fails.
+                pass
+
             self.log_action(self.selected_file, "send", f"Sent to middle folder: {dest_path}")
             self.middle_copy_pending = False
             messagebox.showinfo("Sent", f"File copied to {dest_path}")
@@ -1430,7 +1446,7 @@ class FileManagerApp:
             )
             last = self.db_cursor.fetchone()
             status = last and last[0] == "lock"
-        self.lock_status_label.config(text=f"File locked: {'yes' if status else 'no'}")
+        return status
 
     def is_file_locked(self):
         if not self.selected_file:
