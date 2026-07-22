@@ -234,10 +234,13 @@ class FileManagerApp:
         style.configure('Accent.TButton', background=COLOR_BLUE, foreground=COLOR_WHITE)
         style.map('Accent.TButton', background=[('active', COLOR_PRIMARY), ('!active', COLOR_BLUE)])
         style.configure('TLabel', font=('Helvetica', 10), background=COLOR_BG, foreground=COLOR_TEXT)
+        style.configure('RoleTitle.TLabel', font=('Helvetica', 12), background=COLOR_BG, foreground=COLOR_TEXT)
+        style.configure('MachineTitle.TLabel', font=('Helvetica', 12, 'bold'), background=COLOR_BG, foreground=COLOR_TEXT)
         style.configure('Treeview', font=('Helvetica', 9), rowheight=25, background=COLOR_WHITE, fieldbackground=COLOR_WHITE, foreground=COLOR_TEXT)
         style.configure('Treeview.Heading', font=('Helvetica', 10, 'bold'), background=COLOR_PRIMARY, foreground=COLOR_DARK)
+        style.map('Treeview.Heading', background=[('active', COLOR_PRIMARY), ('!active', COLOR_PRIMARY)], foreground=[('active', COLOR_DARK), ('!active', COLOR_DARK)])
         style.configure('TFrame', background=COLOR_BG)
-        style.configure('TRadiobutton', font=('Helvetica', 10), background=COLOR_BG, foreground=COLOR_TEXT)
+        style.configure('TRadiobutton', font=('Helvetica', 12), background=COLOR_BG, foreground=COLOR_TEXT)
 
         self.root.configure(bg=COLOR_BG)
 
@@ -274,40 +277,22 @@ class FileManagerApp:
 
         action_frame = ttk.Frame(self.left_frame, padding=(0, 8, 0, 0), style='TFrame')
         action_frame.pack(fill=tk.X, pady=(0, 8))
-        ttk.Label(action_frame, text="Current role:", style='TLabel').grid(row=0, column=0, sticky=tk.W)
+        ttk.Label(action_frame, text="Current role:", style='RoleTitle.TLabel').grid(row=0, column=0, sticky=tk.W)
         ttk.Radiobutton(action_frame, text="Operator", variable=self.current_role, value="operator", command=self.on_role_change, style='TRadiobutton').grid(row=0, column=1, sticky=tk.W)
         ttk.Radiobutton(action_frame, text="Supervisor", variable=self.current_role, value="supervisor", command=self.on_role_change, style='TRadiobutton').grid(row=0, column=2, sticky=tk.W)
 
-        self.buttons_frame = ttk.Frame(action_frame, style='TFrame')
-        self.buttons_frame.grid(row=1, column=0, columnspan=3, sticky=tk.EW, pady=(4, 0))
-        self.buttons_frame.columnconfigure(0, weight=1)
-        self.buttons_frame.columnconfigure(1, weight=1)
-        self.buttons_frame.columnconfigure(2, weight=1)
-        self.buttons_frame.columnconfigure(3, weight=1)
-        self.buttons_frame.columnconfigure(4, weight=0)
-        self.lock_button = ttk.Button(self.buttons_frame, text="Lock File", command=self.lock_file, style='TButton')
-        self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
-        self.unlock_button = ttk.Button(self.buttons_frame, text="Unlock File", command=self.unlock_file, style='TButton')
-        self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
+        self.top_buttons_frame = ttk.Frame(self.left_frame, style='TFrame')
+        self.top_buttons_frame.pack(fill=tk.X, pady=(0, 6))
+        ttk.Button(self.top_buttons_frame, text="Add Folder", command=self.add_folder, style='TButton').pack(side=tk.LEFT)
+        ttk.Button(self.top_buttons_frame, text="Clear Folder", command=self.remove_selected_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+        ttk.Button(self.top_buttons_frame, text="Delete File/Folder", command=lambda: self.delete_selected_tree_item(self.tree), style='TButton').pack(side=tk.LEFT, padx=(5, 0))
         # Send to Target Folder is kept in code but hidden from the toolbar.
-        self.send_button = ttk.Button(self.buttons_frame, text="Send to Target Folder", command=self.send_file_to_target, style='Accent.TButton')
-        self.send_arrow_button = ttk.Button(self.buttons_frame, text=">>", command=self.show_middle_panel, style='Accent.TButton', width=4)
-        self.send_arrow_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
-        self.open_view_only_button = ttk.Button(self.buttons_frame, text="Open Machine View", command=self.open_view_only_panel, style='TButton')
-        self.open_view_only_button.grid(row=0, column=3, sticky=tk.EW)
-        self.update_button_visibility()
+        self.send_button = ttk.Button(self.top_buttons_frame, text="Send to Target Folder", command=self.send_file_to_target, style='Accent.TButton')
+        self.send_arrow_button = ttk.Button(self.top_buttons_frame, text=">>", command=self.show_middle_panel, style='Accent.TButton', width=4)
+        self.send_arrow_button.pack(side=tk.LEFT, padx=(5, 0))
 
-        folder_select_frame = ttk.Frame(self.left_frame, style='TFrame')
-        folder_select_frame.pack(fill=tk.X, pady=(0, 10))
-        ttk.Label(folder_select_frame, text="Opened:", style='TLabel').pack(side=tk.LEFT)
-        self.root_path_label = ttk.Label(folder_select_frame, text="<none>", style='TLabel')
-        self.root_path_label.pack(side=tk.LEFT, padx=(5, 10))
-        ttk.Button(folder_select_frame, text="Add Folder", command=self.add_folder, style='TButton').pack(side=tk.LEFT)
-        #ttk.Button(folder_select_frame, text="Clear Folders", command=self.clear_folders, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
-        ttk.Button(folder_select_frame, text="Clear Folder", command=self.remove_selected_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
-        ttk.Button(folder_select_frame, text="Delete File/Folder", command=lambda: self.delete_selected_tree_item(self.tree), style='TButton').pack(side=tk.LEFT, padx=(5, 0))
-
-        ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
+        self.left_top_separator = ttk.Separator(self.left_frame, orient='horizontal')
+        self.left_top_separator.pack(fill='x', pady=(8, 5))
 
         tree_frame = ttk.Frame(self.left_frame, style='TFrame')
         tree_frame.pack(fill=tk.BOTH, expand=True)
@@ -337,11 +322,10 @@ class FileManagerApp:
         self.middle_frame = ttk.Frame(self.right_frame, style='TFrame')
         middle_header_frame = ttk.Frame(self.middle_frame, style='TFrame')
         middle_header_frame.pack(fill=tk.X, pady=(0, 5))
-        middle_label = ttk.Label(middle_header_frame, text="Machine Folder", style='TLabel')
+        middle_label = ttk.Label(middle_header_frame, text="Machine Folder", style='MachineTitle.TLabel')
         middle_label.pack(side=tk.LEFT)
         ttk.Button(middle_header_frame, text="X", command=self.close_middle_panel, style='TButton', width=3).pack(side=tk.RIGHT)
 
-        ttk.Separator(self.middle_frame, orient='horizontal').pack(fill='x', pady=(0, 5))
         middle_controls_frame = ttk.Frame(self.middle_frame, style='TFrame')
         middle_controls_frame.pack(fill=tk.X, pady=(0, 6))
         self.add_middle_folder_button = ttk.Button(middle_controls_frame, text="Add Folder", command=self.add_middle_folder, style='TButton')
@@ -349,6 +333,8 @@ class FileManagerApp:
         ttk.Button(middle_controls_frame, text="Clear Folder", command=self.remove_selected_middle_root_folder, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
         ttk.Button(middle_controls_frame, text="Delete File/Folder", command=lambda: self.delete_selected_tree_item(self.view_tree), style='TButton').pack(side=tk.LEFT, padx=(5, 0))
         ttk.Button(middle_controls_frame, text="<<", command=self.send_file_to_left_folder, style='Accent.TButton', width=4).pack(side=tk.LEFT, padx=(5, 0))
+
+        ttk.Separator(self.middle_frame, orient='horizontal').pack(fill='x', pady=(2, 5))
 
         middle_tree_frame = ttk.Frame(self.middle_frame, style='TFrame')
         middle_tree_frame.pack(fill=tk.BOTH, expand=True)
@@ -381,6 +367,16 @@ class FileManagerApp:
         self.search_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(5, 5))
         ttk.Button(search_frame, text="Search", command=self.search_tree, style='Accent.TButton').pack(side=tk.LEFT)
         ttk.Button(search_frame, text="Clear", command=self.clear_search, style='TButton').pack(side=tk.LEFT, padx=(5, 0))
+
+        self.bottom_lock_frame = ttk.Frame(self.left_frame, style='TFrame')
+        self.bottom_lock_frame.pack(fill=tk.X, pady=(6, 0))
+        self.lock_button = ttk.Button(self.bottom_lock_frame, text="Lock File", command=self.lock_file, style='TButton')
+        self.lock_button.pack(side=tk.LEFT)
+        self.unlock_button = ttk.Button(self.bottom_lock_frame, text="Unlock File", command=self.unlock_file, style='TButton')
+        self.unlock_button.pack(side=tk.LEFT, padx=(5, 0))
+        self.open_view_only_button = ttk.Button(self.bottom_lock_frame, text="Open Machine View", command=self.open_view_only_panel, style='TButton')
+        self.open_view_only_button.pack(side=tk.LEFT, padx=(5, 0))
+        self.update_button_visibility()
 
         # ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
         #
@@ -462,8 +458,10 @@ class FileManagerApp:
         self.middle_copy_pending = False
         self.right_normal_frame.pack_forget()
         self.middle_frame.pack(fill=tk.BOTH, expand=True)
+        # Render the machine panel first, then start the copy.
+        self.root.update_idletasks()
         self._select_tree_path(self.view_tree, dest_folder)
-        self.send_file_to_middle_folder(dest_folder)
+        self.root.after(10, lambda: self.send_file_to_middle_folder(dest_folder))
 
     def open_view_only_panel(self):
         self.middle_copy_pending = False
@@ -491,7 +489,6 @@ class FileManagerApp:
     def clear_folders(self):
         self.root_folders.clear()
         self.save_root_folders()
-        self.root_path_label.config(text="<none>")
         self.tree.delete(*self.tree.get_children())
         self.selected_file = None
         self.selected_file_mtime = None
@@ -744,14 +741,8 @@ class FileManagerApp:
         self.update_middle_add_folder_button()
 
     def update_folder_label(self):
-        if not self.root_folders:
-            self.root_path_label.config(text="<none>")
-            return
-        names = [folder.name for folder in self.root_folders]
-        if len(names) > 2:
-            self.root_path_label.config(text=f"{len(names)} folders opened")
-        else:
-            self.root_path_label.config(text=", ".join(names))
+        # Opened-folder text row was removed from the UI.
+        return
 
     def search_tree(self):
         query = self.search_var.get().strip().lower()
@@ -1005,23 +996,21 @@ class FileManagerApp:
 
     def update_button_visibility(self):
         if self.current_role.get() == "supervisor":
-            self.buttons_frame.grid(row=1, column=0, columnspan=3, sticky=tk.EW, pady=(4, 0))
-            self.lock_button.grid(row=0, column=0, padx=(0, 5), sticky=tk.EW)
-            self.unlock_button.grid(row=0, column=1, padx=(0, 5), sticky=tk.EW)
-            self.send_button.grid_remove()
-            self.send_arrow_button.grid(row=0, column=2, padx=(0, 5), sticky=tk.EW)
-            self.open_view_only_button.grid(row=0, column=3, sticky=tk.EW)
+            self.lock_button.pack(side=tk.LEFT)
+            self.unlock_button.pack(side=tk.LEFT, padx=(5, 0))
+            self.send_button.pack_forget()
+            self.send_arrow_button.pack(side=tk.LEFT, padx=(5, 0))
+            self.open_view_only_button.pack(side=tk.LEFT, padx=(5, 0))
             self.lock_button.config(state=tk.NORMAL)
             self.unlock_button.config(state=tk.NORMAL)
             self.send_arrow_button.config(state=tk.NORMAL)
             self.open_view_only_button.config(state=tk.NORMAL)
         else:
-            self.buttons_frame.grid_remove()
-            self.lock_button.grid_remove()
-            self.unlock_button.grid_remove()
-            self.send_button.grid_remove()
-            self.send_arrow_button.grid_remove()
-            self.open_view_only_button.grid_remove()
+            self.lock_button.pack_forget()
+            self.unlock_button.pack_forget()
+            self.send_button.pack_forget()
+            self.send_arrow_button.pack_forget()
+            self.open_view_only_button.pack_forget()
 
         # CNC Editor should always remain accessible regardless of role.
         self.cnc_editor_button.config(state=tk.NORMAL)
@@ -1267,6 +1256,12 @@ class FileManagerApp:
             return
         dest_path = Path(target) / self.selected_file.name
         try:
+            # If destination exists and is read-only, temporarily make it writable so overwrite can proceed.
+            if dest_path.exists():
+                try:
+                    os.chmod(dest_path, 0o666)
+                except Exception:
+                    pass
             shutil.copy2(self.selected_file, dest_path)
             self.log_action(self.selected_file, "send", f"Sent to {dest_path}")
             messagebox.showinfo("Sent", f"File copied to {dest_path}")
@@ -1305,6 +1300,12 @@ class FileManagerApp:
             pass
 
         try:
+            # If destination exists and is read-only, temporarily make it writable so overwrite can proceed.
+            if dest_path.exists():
+                try:
+                    os.chmod(dest_path, 0o666)
+                except Exception:
+                    pass
             shutil.copy2(self.selected_file, dest_path)
 
             # Mirror lock status to destination so machine view shows the same state.
@@ -1366,6 +1367,12 @@ class FileManagerApp:
             pass
 
         try:
+            # If destination exists and is read-only, temporarily make it writable so overwrite can proceed.
+            if dest_path.exists():
+                try:
+                    os.chmod(dest_path, 0o666)
+                except Exception:
+                    pass
             shutil.copy2(source_file, dest_path)
             self.log_action(source_file, "send", f"Sent to first section folder: {dest_path}")
             messagebox.showinfo("Sent", f"File copied to {dest_path}")
