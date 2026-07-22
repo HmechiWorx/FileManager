@@ -989,6 +989,7 @@ class FileManagerApp:
                 self.current_role.set("operator")
                 return
             messagebox.showinfo("Access Granted", "Switched to Supervisor role.")
+            self.open_view_only_panel()
         # No password needed for operator
         if self.current_role.get() == "operator" and self.middle_frame.winfo_manager() == "pack":
             self.close_middle_panel()
