@@ -415,11 +415,15 @@ class FileManagerApp:
         self.right_tabs.add(log_tab, text="Logs")
 
         # Preview
-        self.preview_text = tk.Text(preview_tab, wrap="none", state=tk.DISABLED, bg=COLOR_WHITE, fg=COLOR_TEXT)
-        preview_scroll_y = ttk.Scrollbar(preview_tab, orient=tk.VERTICAL, command=self.preview_text.yview)
-        self.preview_text.configure(yscrollcommand=preview_scroll_y.set)
+        preview_content_frame = ttk.Frame(preview_tab, style='TFrame')
+        preview_content_frame.pack(fill=tk.BOTH, expand=True)
+        self.preview_text = tk.Text(preview_content_frame, wrap="none", state=tk.DISABLED, bg=COLOR_WHITE, fg=COLOR_TEXT)
+        preview_scroll_y = ttk.Scrollbar(preview_content_frame, orient=tk.VERTICAL, command=self.preview_text.yview)
+        preview_scroll_x = ttk.Scrollbar(preview_tab, orient=tk.HORIZONTAL, command=self.preview_text.xview)
+        self.preview_text.configure(yscrollcommand=preview_scroll_y.set, xscrollcommand=preview_scroll_x.set)
         self.preview_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         preview_scroll_y.pack(fill=tk.Y, side=tk.LEFT)
+        preview_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
 
         # Edit
         button_frame = ttk.Frame(edit_tab, style='TFrame')
@@ -427,25 +431,37 @@ class FileManagerApp:
         self.save_button = ttk.Button(button_frame, text="Save Changes", command=self.save_edits, style='Accent.TButton')
         self.save_button.pack(side=tk.LEFT, fill=tk.X, expand=True)
 
-        self.edit_text = tk.Text(edit_tab, wrap="none", state=tk.NORMAL, bg=COLOR_WHITE, fg=COLOR_TEXT)
-        edit_scroll_y = ttk.Scrollbar(edit_tab, orient=tk.VERTICAL, command=self.edit_text.yview)
-        self.edit_text.configure(yscrollcommand=edit_scroll_y.set)
+        edit_content_frame = ttk.Frame(edit_tab, style='TFrame')
+        edit_content_frame.pack(fill=tk.BOTH, expand=True)
+        self.edit_text = tk.Text(edit_content_frame, wrap="none", state=tk.NORMAL, bg=COLOR_WHITE, fg=COLOR_TEXT)
+        edit_scroll_y = ttk.Scrollbar(edit_content_frame, orient=tk.VERTICAL, command=self.edit_text.yview)
+        edit_scroll_x = ttk.Scrollbar(edit_tab, orient=tk.HORIZONTAL, command=self.edit_text.xview)
+        self.edit_text.configure(yscrollcommand=edit_scroll_y.set, xscrollcommand=edit_scroll_x.set)
         self.edit_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         edit_scroll_y.pack(fill=tk.Y, side=tk.LEFT)
+        edit_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
 
         # Compare Tab
-        self.compare_text = tk.Text(compare_tab, wrap="none", state=tk.DISABLED, bg=COLOR_WHITE, fg=COLOR_TEXT)
-        compare_scroll_y = ttk.Scrollbar(compare_tab, orient=tk.VERTICAL, command=self.compare_text.yview)
-        self.compare_text.configure(yscrollcommand=compare_scroll_y.set)
+        compare_content_frame = ttk.Frame(compare_tab, style='TFrame')
+        compare_content_frame.pack(fill=tk.BOTH, expand=True)
+        self.compare_text = tk.Text(compare_content_frame, wrap="none", state=tk.DISABLED, bg=COLOR_WHITE, fg=COLOR_TEXT)
+        compare_scroll_y = ttk.Scrollbar(compare_content_frame, orient=tk.VERTICAL, command=self.compare_text.yview)
+        compare_scroll_x = ttk.Scrollbar(compare_tab, orient=tk.HORIZONTAL, command=self.compare_text.xview)
+        self.compare_text.configure(yscrollcommand=compare_scroll_y.set, xscrollcommand=compare_scroll_x.set)
         self.compare_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
         compare_scroll_y.pack(fill=tk.Y, side=tk.LEFT)
+        compare_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
 
         # Logs
-        self.log_text = tk.Text(log_tab, wrap="none", state=tk.DISABLED, bg=COLOR_WHITE, fg=COLOR_TEXT)
-        log_scroll = ttk.Scrollbar(log_tab, orient=tk.VERTICAL, command=self.log_text.yview)
-        self.log_text.configure(yscrollcommand=log_scroll.set)
+        log_content_frame = ttk.Frame(log_tab, style='TFrame')
+        log_content_frame.pack(fill=tk.BOTH, expand=True)
+        self.log_text = tk.Text(log_content_frame, wrap="none", state=tk.DISABLED, bg=COLOR_WHITE, fg=COLOR_TEXT)
+        log_scroll_y = ttk.Scrollbar(log_content_frame, orient=tk.VERTICAL, command=self.log_text.yview)
+        log_scroll_x = ttk.Scrollbar(log_tab, orient=tk.HORIZONTAL, command=self.log_text.xview)
+        self.log_text.configure(yscrollcommand=log_scroll_y.set, xscrollcommand=log_scroll_x.set)
         self.log_text.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
-        log_scroll.pack(fill=tk.Y, side=tk.LEFT)
+        log_scroll_y.pack(fill=tk.Y, side=tk.LEFT)
+        log_scroll_x.pack(fill=tk.X, side=tk.BOTTOM)
         self.refresh_logs()
     def show_middle_panel(self):
         if not self.selected_file or not self.selected_file.is_file():
