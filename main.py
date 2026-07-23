@@ -376,6 +376,8 @@ class FileManagerApp:
         self.unlock_button.pack(side=tk.LEFT, padx=(5, 0))
         self.open_view_only_button = ttk.Button(self.bottom_lock_frame, text="Open Machine View", command=self.open_view_only_panel, style='TButton')
         self.open_view_only_button.pack(side=tk.LEFT, padx=(5, 0))
+        self.open_preview_edit_button = ttk.Button(self.bottom_lock_frame, text="Open Preview/Edit", command=self.open_preview_edit_panel, style='TButton')
+        self.open_preview_edit_button.pack(side=tk.LEFT, padx=(5, 0))
         self.update_button_visibility()
 
         # ttk.Separator(self.left_frame, orient='horizontal').pack(fill='x', pady=(10, 5))
@@ -467,6 +469,11 @@ class FileManagerApp:
         self.middle_copy_pending = False
         self.right_normal_frame.pack_forget()
         self.middle_frame.pack(fill=tk.BOTH, expand=True)
+
+    def open_preview_edit_panel(self):
+        self.middle_copy_pending = False
+        self.middle_frame.pack_forget()
+        self.right_normal_frame.pack(fill=tk.BOTH, expand=True)
 
     def close_middle_panel(self):
         self.middle_copy_pending = False
@@ -1002,16 +1009,19 @@ class FileManagerApp:
             self.send_button.pack_forget()
             self.send_arrow_button.pack(side=tk.LEFT, padx=(5, 0))
             self.open_view_only_button.pack(side=tk.LEFT, padx=(5, 0))
+            self.open_preview_edit_button.pack(side=tk.LEFT, padx=(5, 0))
             self.lock_button.config(state=tk.NORMAL)
             self.unlock_button.config(state=tk.NORMAL)
             self.send_arrow_button.config(state=tk.NORMAL)
             self.open_view_only_button.config(state=tk.NORMAL)
+            self.open_preview_edit_button.config(state=tk.NORMAL)
         else:
             self.lock_button.pack_forget()
             self.unlock_button.pack_forget()
             self.send_button.pack_forget()
             self.send_arrow_button.pack_forget()
             self.open_view_only_button.pack_forget()
+            self.open_preview_edit_button.pack_forget()
 
         # CNC Editor should always remain accessible regardless of role.
         self.cnc_editor_button.config(state=tk.NORMAL)
